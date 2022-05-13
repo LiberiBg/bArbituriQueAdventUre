@@ -16,7 +16,7 @@ public class Controleur implements Initializable{
 	private TilePane terrainMap;
 	
 	@FXML
-	private ImageView perso;
+	private ImageView hero;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
