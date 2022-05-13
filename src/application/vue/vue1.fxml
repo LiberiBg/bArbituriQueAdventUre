@@ -10,7 +10,10 @@
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <TilePane fx:id="terrainMap" prefHeight="200.0" prefWidth="200.0" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="perso" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ressource/sprite.jpg" />
+               </image></ImageView>
          </children>
       </StackPane>
    </center>

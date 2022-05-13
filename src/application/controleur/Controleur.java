@@ -14,11 +14,15 @@ public class Controleur implements Initializable{
 	
 	@FXML
 	private TilePane terrainMap;
+	
+	@FXML
+	private ImageView perso;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		terrainMap.setMaxSize(20*16, 10*16);
 		this.initCarte();
+		
 	}
 	
 	public void initCarte() {
