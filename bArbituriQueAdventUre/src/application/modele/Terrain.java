@@ -3,8 +3,6 @@ package application.modele;
 public class Terrain {
 	
 	
-	private int x, y;
-	
 	int [] tabTerrain = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
 			-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
 			-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
@@ -17,14 +15,11 @@ public class Terrain {
 			20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20};
 	
 	public Terrain() {
-		this.x = 5;
-		this.y = 5;
+		
 	}
 	
 	public int[] getTerrain(){
 		return tabTerrain;
 	}
-	
-
 	
 }
