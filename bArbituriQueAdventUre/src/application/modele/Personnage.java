@@ -9,15 +9,18 @@ public abstract class Personnage {
 		private int vie;
 		private int vitesse;
 		
-		public Personnage() {
-			this.x= new SimpleIntegerProperty();
-			this.y = new SimpleIntegerProperty();
+		public Personnage(int x, int y) {
+			this.x= new SimpleIntegerProperty(x);
+			this.y = new SimpleIntegerProperty(y);
+			
 		}
-		public IntegerProperty XProperty() {
+		
+		
+		public IntegerProperty getX() {
 			return x;
 		}
 		
-		public IntegerProperty YProperty() {
+		public IntegerProperty getY() {
 			return y ;
 		}	
 
@@ -28,9 +31,4 @@ public abstract class Personnage {
 		public void setY(int n){
 			y.setValue(n);
 		}
-		
-//		public boolean checkCaseEnDessous() {
-//			IntegerProperty yDuPersonnage = this.y;
-//			
-//		}
 }
