@@ -12,6 +12,7 @@ public class HerosVue extends ImageView {
 		super();
         setImage(new Image(url));
         this.hero = hero ;
+        initJoueur();
     }
 	
 

@@ -26,14 +26,15 @@ public class Controleur implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		Terrain terrain = new Terrain();
 		TerrainVue terrainMap = new TerrainVue(terrain);
 		environnementPane.getChildren().add(terrainMap);
 		
 		Heros hero = new Heros(160, 200) ;
 		HerosVue heroVue = new HerosVue("application/ressource/sprite.png", hero);
-		heroVue.initJoueur();
 		environnementPane.getChildren().add(heroVue);
+		
 		root.addEventHandler(KeyEvent.KEY_PRESSED, new KeyPressed(hero));
 	}
 
