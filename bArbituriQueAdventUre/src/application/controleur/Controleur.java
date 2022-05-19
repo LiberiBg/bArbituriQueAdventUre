@@ -31,6 +31,8 @@ public class Controleur implements Initializable{
 
 	private int temps;
 	
+	private Heros hero;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -38,11 +40,12 @@ public class Controleur implements Initializable{
 		TerrainVue terrainMap = new TerrainVue(terrain);
 		environnementPane.getChildren().add(terrainMap);
 
-		Heros hero = new Heros(160, 200) ;
+		this.hero = new Heros(160, 200) ;
 		HerosVue heroVue = new HerosVue("application/ressource/sprite.png", hero);
 		environnementPane.getChildren().add(heroVue);
 
 		root.addEventHandler(KeyEvent.KEY_PRESSED, new KeyPressed(hero));
+		root.addEventHandler(KeyEvent.KEY_RELEASED, new KeyReleased(hero));
 		
 		initAnimation();
 		//demarre l'animation
@@ -56,7 +59,7 @@ public class Controleur implements Initializable{
 		KeyFrame kf = new KeyFrame(
 				Duration.seconds(0.017),
 				(ev -> {
-					
+					this.hero.move();
 				}));
 		this.gameLoop.getKeyFrames().add(kf);
 		this.gameLoop.play();

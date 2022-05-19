@@ -8,6 +8,7 @@ public abstract class Personnage {
 		private IntegerProperty x, y;
 		private int vie;
 		private int vitesse;
+		private int direction;
 		
 		public Personnage(int x, int y) {
 			this.x= new SimpleIntegerProperty(x);
@@ -29,16 +30,23 @@ public abstract class Personnage {
 			y.setValue(n);
 		}
 		
-		public void avancer () {
-			this.x.setValue(this.x.getValue() + 8);
+		public void setDirection(int d){
+			this.direction = d;
 		}
 		
-		public void reculer() {
-			this.x.setValue(this.x.getValue() - 8);
-		}
-		
-		public void sauter() {
-			this.y.setValue(this.y.getValue() - 10);
+		public void move () {
+			switch(direction) {
+			case 1:
+				this.x.setValue(this.x.getValue() + 3);
+				break;
+			case 2:
+				this.x.setValue(this.x.getValue() - 3);
+				break;
+			case 3:
+				this.y.setValue(this.y.getValue() - 4);
+				break;
+			}
+
 		}
 		
 		public void fall() {
