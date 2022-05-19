@@ -12,10 +12,7 @@ public abstract class Personnage {
 		public Personnage(int x, int y) {
 			this.x= new SimpleIntegerProperty(x);
 			this.y = new SimpleIntegerProperty(y);
-			
 		}
-		
-		
 		public IntegerProperty getX() {
 			return x;
 		}
@@ -30,5 +27,21 @@ public abstract class Personnage {
 		
 		public void setY(int n){
 			y.setValue(n);
+		}
+		
+		public void avancer () {
+			this.x.setValue(this.x.getValue() + 8);
+		}
+		
+		public void reculer() {
+			this.x.setValue(this.x.getValue() - 8);
+		}
+		
+		public void sauter() {
+			this.y.setValue(this.y.getValue() - 10);
+		}
+		
+		public void fall() {
+			
 		}
 }
