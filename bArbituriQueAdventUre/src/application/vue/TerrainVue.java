@@ -1,7 +1,6 @@
 package application.vue;
 
 import application.modele.Terrain;
-import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;

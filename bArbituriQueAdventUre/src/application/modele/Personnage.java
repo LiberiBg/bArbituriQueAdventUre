@@ -7,7 +7,6 @@ public abstract class Personnage {
 
 		private IntegerProperty x, y;
 		private int vie;
-		private int vitesse;
 		private int direction;
 		
 		public Personnage(int x, int y) {

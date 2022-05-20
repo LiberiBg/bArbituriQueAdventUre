@@ -28,7 +28,6 @@ public class KeyPressed implements EventHandler<KeyEvent>{
 			this.hero.setDirection(3);
 			break;
 		default:
-			this.hero.setDirection(0);
 			break;
 			
 		}

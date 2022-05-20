@@ -22,13 +22,8 @@ public class KeyReleased implements EventHandler<KeyEvent>{
 		case D :
 			System.out.println("Droite STOP");
 			this.hero.setDirection(0);
-			break ;
-		case SPACE:
-			System.out.println("sauter STOP");
-			this.hero.setDirection(0);
 			break;
 		default:
-			this.hero.setDirection(0);
 			break;
 			
 		}
