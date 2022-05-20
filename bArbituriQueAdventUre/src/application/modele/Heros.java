@@ -3,7 +3,7 @@ package application.modele;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
-public class Heros extends Personnage{
+public class Heros {
 
 	private IntegerProperty x, y ;
 	

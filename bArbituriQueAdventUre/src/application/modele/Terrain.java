@@ -1,27 +1,50 @@
 package application.modele;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Terrain {
+	
+	
+	private List<String> listeTerrain;
 
+	public Terrain() throws IOException {
+		File file = new File("/home/etudiants/info/nfenollosa/eclipseworkspace/bArbituriQueAdventUreBis/src/application/ressource/FirstMap.csv");
+		this.listeTerrain = readFile(file);
+	}
+	
+	public List<String> readFile(File file) throws IOException {
+	
+		List<String> listeParLigne = new ArrayList<String>();
+		List<String> resultat = new ArrayList<String>();
+	    String val = " ";
+	    int i=0;
+	    FileReader fr = new FileReader(file);
+	    BufferedReader br = new BufferedReader(fr);
+	    
+	    for (String line = br.readLine(); line != null; line = br.readLine()) {
+	        listeParLigne.add(line);
+	        val = listeParLigne.get(i);
+	    	List<String> list = new ArrayList<String>(Arrays.asList(val.split(",")));
+	    	resultat.addAll(list);
+	    	i++;
+	    }
+	    
+	    br.close();
+	    fr.close();
 
-	int [] tabTerrain = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-			-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-			-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-			-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-			-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,21,
-			-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,21,21,21,20,
-			-1,-1,-1,21,21,21,-1,-1,-1,-1,21,21,21,21,21,21,20,20,20,20,
-			21,21,21,20,20,20,21,21,21,21,20,20,20,20,20,20,20,20,20,20,
-			20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
-			20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20};
-
-	public Terrain() {
-
+	    return resultat;
+	}
+	
+	public List<String> getListeTerrain(){
+		return this.listeTerrain;
 	}
 
-	public int[] getTerrain(){
-		return tabTerrain;
-	}
 
 }
+
