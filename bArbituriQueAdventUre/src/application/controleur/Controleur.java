@@ -1,5 +1,6 @@
 package application.controleur;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import application.modele.Heros;
@@ -33,7 +34,12 @@ public class Controleur implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		Terrain terrain = new Terrain();
+		Terrain terrain = null;
+		try {
+			terrain = new Terrain();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		TerrainVue terrainMap = new TerrainVue(terrain);
 		environnementPane.getChildren().add(terrainMap);
 
