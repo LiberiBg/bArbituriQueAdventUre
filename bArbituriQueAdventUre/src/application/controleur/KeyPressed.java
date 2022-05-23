@@ -14,6 +14,7 @@ public class KeyPressed implements EventHandler<KeyEvent>{
 
 	@Override
 	public void handle(KeyEvent event) {
+		//VIRER LES DIRECTIONS ET AUGMENTER LA VITESSE JUSQU'AU MAX QUAND ON APPUIE SUR LES TOUCHES
 		switch(event.getCode()) {
 		case Q:
 			System.out.println("Gauche");

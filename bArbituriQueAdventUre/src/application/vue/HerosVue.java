@@ -17,8 +17,8 @@ public class HerosVue extends ImageView {
 	
 
 	public void initJoueur() {
-		this.translateXProperty().bind(this.hero.getX());
-		this.translateYProperty().bind(this.hero.getY());
+		this.translateXProperty().bind(this.hero.XProperty());
+		this.translateYProperty().bind(this.hero.YProperty());
 		System.out.println("it works");
 	}
 		
