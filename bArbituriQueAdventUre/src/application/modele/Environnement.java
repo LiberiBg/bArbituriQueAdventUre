@@ -7,18 +7,18 @@ public class Environnement {
 
 	private ArrayList<Personnage> listePersonnage;
 	private Terrain terrain;
+	private Heros hero;
 
 	public Environnement() {
 		this.listePersonnage = new ArrayList<Personnage>();
-		
+		hero = new Heros(160, 200);
 		try {
-			this.setTerrain(new Terrain());
+			terrain = new Terrain();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
 
 	//Récupère le Hero dans la liste de tous les personnages
 	public Heros getHeros() {
@@ -43,6 +43,10 @@ public class Environnement {
 	public void setTerrain(Terrain terrain) {
 		this.terrain = terrain;
 	}
-
+	
+	public Heros getHero() {
+		return this.hero;
+	}
+	
 
 }
