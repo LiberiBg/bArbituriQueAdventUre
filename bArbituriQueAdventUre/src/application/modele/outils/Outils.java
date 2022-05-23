@@ -7,7 +7,7 @@ public abstract class Outils extends Objet{
 	private double degat;
 
 	public Outils(String cheminSprite, int quantité, int quantitéMax) {
-		super(cheminSprite, quantité, quantitéMax);
+		super(cheminSprite, quantité, 1);
 	}
 
 	

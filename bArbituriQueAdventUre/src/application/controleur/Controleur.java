@@ -26,9 +26,7 @@ public class Controleur implements Initializable{
 	private Pane environnementPane;
 
 	private Timeline gameLoop;
-	
-	private Heros hero;
-	
+		
 	private Environnement environnement;
 	
 	@Override
@@ -38,12 +36,11 @@ public class Controleur implements Initializable{
 		TerrainVue terrainVue = new TerrainVue(environnement.getTerrain());
 		environnementPane.getChildren().add(terrainVue);
 
-		this.hero = new Heros(160, 200) ;
-		HerosVue heroVue = new HerosVue("application/ressource/sprite.png", hero);
+		HerosVue heroVue = new HerosVue("application/ressource/sprite.png", environnement.getHero());
 		environnementPane.getChildren().add(heroVue);
 
-		root.addEventHandler(KeyEvent.KEY_PRESSED, new KeyPressed(hero));
-		root.addEventHandler(KeyEvent.KEY_RELEASED, new KeyReleased(hero));
+		root.addEventHandler(KeyEvent.KEY_PRESSED, new KeyPressed(environnement.getHero()));
+		root.addEventHandler(KeyEvent.KEY_RELEASED, new KeyReleased(environnement.getHero()));
 		
 		initAnimation();
 		//demarre l'animation
@@ -57,7 +54,7 @@ public class Controleur implements Initializable{
 		KeyFrame kf = new KeyFrame(
 				Duration.seconds(0.017),
 				(ev -> {
-					this.hero.move();
+					this.environnement.getHero().move();
 					
 					//FAIRE LA GRAVITE
 				}));
