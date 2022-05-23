@@ -21,12 +21,11 @@ public class InventaireVue extends TilePane {
 		ImageView ImgInv = null ;
 		ArrayList<Objets> Inventaire = this.inv.GetFournitures();
 		for (int i = 0 ; i < Inventaire.size() ; i ++) {
-		switch (Inventaire.get(i)) {
-			case 1 : 
-				ImgInv = new ImageView(new Image ("application/ressource/epee-bois.png") );
-				break;
-			
-			}
+//		switch (Inventaire.get(i)) {
+//			case 1 : 
+//				ImgInv = new ImageView(new Image ("application/ressource/epee-bois.png") );
+//				break;
+//			}
 			
 			
 		}

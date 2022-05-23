@@ -1,6 +1,7 @@
 package application.modele;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 public abstract class Personnage {
 
@@ -8,10 +9,10 @@ public abstract class Personnage {
 		private int vie;
 		private int vitesse;
 		
-		public Personnage(IntegerProperty x, IntegerProperty y, int vie, int vitesse) {
+		public Personnage(int x, int y, int vie, int vitesse) {
 			
-			this.x = x;
-			this.y = y;
+			this.x= new SimpleIntegerProperty(x);
+			this.y = new SimpleIntegerProperty(y);
 			this.vie = vie;
 			this.vitesse = vitesse;
 		}

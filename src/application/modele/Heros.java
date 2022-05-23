@@ -8,7 +8,7 @@ public class Heros extends Personnage{
 	private IntegerProperty x, y ;
 	
 	
-	public Heros(IntegerProperty x, IntegerProperty y, int vie, int vitesse) {
+	public Heros(int x, int y, int vie, int vitesse) {
 		super(x, y, vie, vitesse);
 		
 	}

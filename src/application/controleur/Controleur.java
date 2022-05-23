@@ -37,7 +37,7 @@ public class Controleur implements Initializable{
 	 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Heros hero = new Heros(100, 100) ;
+		Heros hero = new Heros(100, 100, 100, 100) ;
 		HerosVue heroVue = new HerosVue(hero);
 		
 		//terrainMap.setMaxSize(20*16, 10*16);
