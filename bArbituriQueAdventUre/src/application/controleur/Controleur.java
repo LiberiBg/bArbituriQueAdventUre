@@ -1,10 +1,10 @@
 package application.controleur;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import application.modele.Environnement;
 import application.modele.Heros;
-import application.modele.Terrain;
 import application.vue.HerosVue;
 import application.vue.TerrainVue;
 import javafx.animation.KeyFrame;
@@ -26,22 +26,17 @@ public class Controleur implements Initializable{
 	private Pane environnementPane;
 
 	private Timeline gameLoop;
-
-	private int temps;
 	
 	private Heros hero;
+	
+	private Environnement environnement;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		Terrain terrain = null;
-		try {
-			terrain = new Terrain();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		TerrainVue terrainMap = new TerrainVue(terrain);
-		environnementPane.getChildren().add(terrainMap);
+		environnement = new Environnement();
+		TerrainVue terrainVue = new TerrainVue(environnement.getTerrain());
+		environnementPane.getChildren().add(terrainVue);
 
 		this.hero = new Heros(160, 200) ;
 		HerosVue heroVue = new HerosVue("application/ressource/sprite.png", hero);
@@ -63,6 +58,8 @@ public class Controleur implements Initializable{
 				Duration.seconds(0.017),
 				(ev -> {
 					this.hero.move();
+					
+					//FAIRE LA GRAVITE
 				}));
 		this.gameLoop.getKeyFrames().add(kf);
 		this.gameLoop.play();

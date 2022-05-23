@@ -13,11 +13,11 @@ public abstract class Personnage {
 			this.x= new SimpleIntegerProperty(x);
 			this.y = new SimpleIntegerProperty(y);
 		}
-		public IntegerProperty getX() {
+		public IntegerProperty XProperty() {
 			return x;
 		}
 		
-		public IntegerProperty getY() {
+		public IntegerProperty YProperty() {
 			return y ;
 		}	
 
@@ -36,13 +36,13 @@ public abstract class Personnage {
 		public void move () {
 			switch(direction) {
 			case 1:
-				this.x.setValue(this.x.getValue() + 3);
+				this.x.setValue(this.x.getValue() + 1);
 				break;
 			case 2:
-				this.x.setValue(this.x.getValue() - 3);
+				this.x.setValue(this.x.getValue() - 1);
 				break;
 			case 3:
-				this.y.setValue(this.y.getValue() - 4);
+				this.y.setValue(this.y.getValue() - 1);
 				break;
 			}
 

@@ -14,6 +14,8 @@ public class KeyReleased implements EventHandler<KeyEvent>{
 
 	@Override
 	public void handle(KeyEvent event) {
+		
+		// VIRER LA DIRECTION ET QUAND ON LACHE LA TOUCHE LA VITESSE ASSOCIEE BAISSE JUSQUA L'ARRET
 		switch(event.getCode()) {
 		case Q:
 			System.out.println("Gauche STOP");
@@ -27,7 +29,5 @@ public class KeyReleased implements EventHandler<KeyEvent>{
 			break;
 			
 		}
-		
-		//changer les switch en if pour pouvoir avancer et sauter simultanément ???
 	}
 }
