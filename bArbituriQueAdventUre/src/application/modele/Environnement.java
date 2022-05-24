@@ -1,39 +1,51 @@
 package application.modele;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import application.modele.Parametres;
 
 public class Environnement {
 
 	private ArrayList<Personnage> listePersonnage;
-	private ArrayList<Integer> tabTerrain;
-	private int X;
-	private int Y;
+	private Terrain terrain;
+	private Heros hero;
 
 	public Environnement() {
 		this.listePersonnage = new ArrayList<Personnage>();
-		//CREER ET CHARGER MAP();
-	}
-
-
-	//Récupère le Hero dans la liste de tous les personnages
-	public Heros getHeros() {
-		for (Personnage p: listePersonnage) {
-			if (p instanceof Heros) {
-				return (Heros) p;
-			}
+		try {
+			terrain = new Terrain();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return null;
+		hero = new Heros(60, 40, terrain);
 	}
+
+//	public Heros getHeros() {
+//		for (Personnage p: listePersonnage) {
+//			if (p instanceof Heros) {
+//				return (Heros) p;
+//			}
+//		}
+//		return null;
+//	}
 
 	public void addPersonnage(Personnage p) {
 		this.listePersonnage.add(p);
 	}
 
+
+	public Terrain getTerrain() {
+		return terrain;
+	}
+
+
+	public void setTerrain(Terrain terrain) {
+		this.terrain = terrain;
+	}
+	
+	public Heros getHero() {
+		return this.hero;
+	}
+	
 
 }

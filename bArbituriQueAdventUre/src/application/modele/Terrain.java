@@ -14,7 +14,7 @@ public class Terrain {
 	private List<String> listeTerrain;
 
 	public Terrain() throws IOException {
-		File file = new File("/home/etudiants/info/nfenollosa/eclipseworkspace/bArbituriQueAdventUreBis/src/application/ressource/FirstMap.csv");
+		File file = new File("/home/etudiants/info/nfenollosa/git/bArbituriQueAdventUre/bArbituriQueAdventUre/src/application/ressource/FirstMap.csv");
 		this.listeTerrain = readFile(file);
 	}
 	
@@ -37,6 +37,9 @@ public class Terrain {
 	    
 	    br.close();
 	    fr.close();
+	    
+	    resultat.set(70, "20");
+	    resultat.set(71, "20");
 
 	    return resultat;
 	}
@@ -47,4 +50,3 @@ public class Terrain {
 
 
 }
-
