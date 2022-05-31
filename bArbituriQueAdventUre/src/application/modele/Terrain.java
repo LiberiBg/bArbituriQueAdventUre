@@ -14,7 +14,7 @@ public class Terrain {
 	private List<String> listeTerrain;
 
 	public Terrain() throws IOException {
-		File file = new File("/home/etudiants/info/manguyen/git/bArbituriQueAdventUre/bArbituriQueAdventUre/src/application/ressource/FirstMap.csv");
+		File file = new File("/home/etudiants/info/nfenollosa/eclipseworkspace/bArbituriQueAdventUreSprint2/src/application/ressource/FirstMap.csv");
 		this.listeTerrain = readFile(file);
 	}
 	

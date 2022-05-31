@@ -42,21 +42,21 @@ public abstract class Personnage {
 		public void augmenterVitesseDroite() {
 			if (!colision.blockDroitVide(this.x.getValue(), this.y.getValue()))
 				this.vitesseHotizontale = 0;
-			else if (vitesseHotizontale < VITESSEMAX && (colision.blockDroitVide(this.x.getValue(), this.y.getValue())))
+			else if (vitesseHotizontale < VITESSEMAX)
 				this.vitesseHotizontale ++;
 		}
 		
 		public void augmenterVitesseGauche() {
 			if (!colision.blockGaucheVide(this.x.getValue(), this.y.getValue()))
 				this.vitesseHotizontale = 0;
-			else if (vitesseHotizontale > -VITESSEMAX && (colision.blockGaucheVide(this.x.getValue(), this.y.getValue())))
+			else if (vitesseHotizontale > -VITESSEMAX)
 				this.vitesseHotizontale --;
 		}
 		
 		public void augmenterVitesseHaut() {
 			if (!colision.blockDessusVide(this.x.getValue(), this.y.getValue()))
 				this.vitesseVerticale = 0;
-			else if (vitesseVerticale < SAUTMAX && !colision.blockDessousVide(this.x.getValue(), this.y.getValue()))
+			else if (vitesseVerticale < SAUTMAX)
 				this.vitesseVerticale =- 50;
 		}
 		

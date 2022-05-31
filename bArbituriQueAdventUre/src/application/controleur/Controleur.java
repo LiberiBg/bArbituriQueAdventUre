@@ -46,20 +46,17 @@ public class Controleur implements Initializable{
 
 		HerosVue heroVue = new HerosVue("application/ressource/sprite.png", environnement.getHero());
 		environnementPane.getChildren().add(heroVue);
-
-		root.addEventHandler(KeyEvent.KEY_PRESSED, new KeyPressed(environnement.getHero()));
+		
+		InventaireVue InventaireVue = new InventaireVue(environnement.getInventaire());
+		root.addEventHandler(KeyEvent.KEY_PRESSED, new KeyPressed(environnement.getHero(), InventaireVue));
 		root.addEventHandler(KeyEvent.KEY_RELEASED, new KeyReleased(environnement.getHero()));
 		
 		initAnimation();
 		//demarre l'animation
 		gameLoop.play();
 		
-		InventaireVue InventaireVue = new InventaireVue(environnement.getInventaire());
 		environnementPane.getChildren().add(InventaireVue);
-		//Hache hache = new Hache(1,1,1);
-		//environnement.getInventaire().ajouterObjet(hache);
-		System.out.println("oui");
-		System.out.println(environnement.getInventaire().getListeObjet());
+		
 	}
 
 	private void initAnimation() {

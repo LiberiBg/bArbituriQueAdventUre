@@ -31,7 +31,8 @@ public class Colision {
 	public boolean blockDroitVide (int x, int y) {
 		x = x/16;
 		y = y/16;
-		x = x + y*20;
+
+		x = x + y*20 + 20;
 		id = blocks.get(x + 1);
 		return estVide(id);
 	}
@@ -39,7 +40,7 @@ public class Colision {
 	public boolean blockGaucheVide (int x, int y) {
 		x = x/16;
 		y = y/16;
-		x = x + y*20;
+		x = x + y*20 - 20;
 		id = blocks.get(x - 1);
 		return estVide(id);
 	}
