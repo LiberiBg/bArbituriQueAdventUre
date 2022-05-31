@@ -18,15 +18,18 @@ public class KeyPressed implements EventHandler<KeyEvent>{
 		switch(event.getCode()) {
 		case Q:
 			System.out.println("Gauche");
-			this.hero.setDirection(2);
+			this.hero.augmenterVitesseGauche();
+//			this.hero.setDirection(2);
 			break ;
 		case D :
 			System.out.println("Driute");
-			this.hero.setDirection(1);
+			this.hero.augmenterVitesseDroite();
+//			this.hero.setDirection(1);
 			break ;
 		case SPACE:
 			System.out.println("sauter");
-			this.hero.setDirection(3);
+			this.hero.augmenterVitesseHaut();
+//			this.hero.setDirection(3);
 			break;
 		default:
 			break;

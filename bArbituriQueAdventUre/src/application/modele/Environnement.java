@@ -52,6 +52,9 @@ public class Environnement {
 		return inventaire;
 	}
 	
+	public Heros getHero() {
+		return this.hero;
+	}
 	
 
 }

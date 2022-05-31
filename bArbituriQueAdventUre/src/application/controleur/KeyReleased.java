@@ -19,11 +19,13 @@ public class KeyReleased implements EventHandler<KeyEvent>{
 		switch(event.getCode()) {
 		case Q:
 			System.out.println("Gauche STOP");
-			this.hero.setDirection(0);
+			this.hero.ralentir();
+//			this.hero.setDirection(0);
 			break ;
 		case D :
 			System.out.println("Droite STOP");
-			this.hero.setDirection(0);
+			this.hero.ralentir();
+//			this.hero.setDirection(0);
 			break;
 		default:
 			break;
