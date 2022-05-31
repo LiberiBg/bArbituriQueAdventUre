@@ -60,7 +60,6 @@ public class InventaireVue extends TilePane{
 					
 			}
 				this.getChildren().add(img);
-//				System.out.println("lllll");
 		}
 	}
 	

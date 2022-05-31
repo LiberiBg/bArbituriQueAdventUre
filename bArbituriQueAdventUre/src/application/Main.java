@@ -12,7 +12,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = FXMLLoader.load(getClass().getResource("vue/vue1.fxml"));
-			Scene scene = new Scene(root,400,400);
+			Scene scene = new Scene(root,1280,720);
 			root.requestFocus();
 //			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

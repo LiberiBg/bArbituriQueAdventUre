@@ -2,9 +2,13 @@ package application.vue;
 
 import java.util.List;
 
+import application.controleur.ControleurTuileCliquée;
+import application.controleur.ControleurTuileQuittée;
+import application.controleur.ControleurTuileSurvolée;
 import application.modele.Terrain;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 
 public class TerrainVue extends TilePane{
@@ -34,7 +38,12 @@ public class TerrainVue extends TilePane{
 				break;
 			}
 			this.getChildren().add(img);
+			img.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, new ControleurTuileSurvolée());
+			img.addEventHandler(MouseEvent.MOUSE_EXITED, new ControleurTuileQuittée());
+			img.addEventHandler(MouseEvent.MOUSE_CLICKED, new ControleurTuileCliquée(i, this.terrain));
 		}
 		
 	}
+	
+	
 }

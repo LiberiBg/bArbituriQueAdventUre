@@ -14,7 +14,7 @@ public class Terrain {
 	private List<String> listeTerrain;
 
 	public Terrain() throws IOException {
-		File file = new File("/home/etudiants/info/nfenollosa/git/bArbituriQueAdventUre/bArbituriQueAdventUre/src/application/ressource/FirstMap.csv");
+		File file = new File("/home/etudiants/info/manguyen/git/bArbituriQueAdventUre/bArbituriQueAdventUre/src/application/ressource/FirstMap.csv");
 		this.listeTerrain = readFile(file);
 	}
 	
@@ -44,6 +44,16 @@ public class Terrain {
 	public List<String> getListeTerrain(){
 		return this.listeTerrain;
 	}
+	
+	public int trouverTuileSelonLIndice(int indice) {
+		return Integer.parseInt(this.listeTerrain.get(indice));
+	}
+	
+	public void détuireBlocsSelonLIndice(int indice) {
+		this.listeTerrain.set(indice, "-1");
+	}
+	
+	
 
 
 }
