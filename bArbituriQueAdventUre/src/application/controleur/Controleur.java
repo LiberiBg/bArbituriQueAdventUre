@@ -44,7 +44,7 @@ public class Controleur implements Initializable{
 		TerrainVue terrainVue = new TerrainVue(environnement.getTerrain());
 		environnementPane.getChildren().add(terrainVue);
 
-		this.hero = new Heros(160, 200) ;
+		this.hero = new Heros(160, 200, environnement.getTerrain()) ;
 		HerosVue heroVue = new HerosVue("application/ressource/sprite.png", hero);
 		environnementPane.getChildren().add(heroVue);
 
@@ -70,7 +70,7 @@ public class Controleur implements Initializable{
 		KeyFrame kf = new KeyFrame(
 				Duration.seconds(0.017),
 				(ev -> {
-					this.hero.move();
+				
 					
 					//FAIRE LA GRAVITE
 				}));

@@ -8,6 +8,7 @@ public class Environnement {
 	private ArrayList<Personnage> listePersonnage;
 	private Terrain terrain;
 	private Inventaire inventaire ;
+	private Heros hero;
 
 	public Environnement() {
 		this.listePersonnage = new ArrayList<Personnage>();
@@ -18,6 +19,7 @@ public class Environnement {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		hero = new Heros(60, 40, terrain);
 	}
 
 

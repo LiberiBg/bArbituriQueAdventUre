@@ -6,8 +6,8 @@ public class Heros extends Personnage{
 
 	private Inventaire inventaire;
 	
-	public Heros(int x, int y) {
-		super(x, y);
+	public Heros(int x, int y, Terrain terrain) {
+		super(x, y, terrain);
 		this.inventaire = new Inventaire();
 		
 	}	
