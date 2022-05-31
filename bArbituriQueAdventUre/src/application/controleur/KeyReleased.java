@@ -1,6 +1,7 @@
 package application.controleur;
 
 import application.modele.Heros;
+import application.vue.InventaireVue;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 

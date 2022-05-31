@@ -26,9 +26,8 @@ public class Inventaire {
 		listeObjets.add(hache);
 		listeObjets.add(epee);
 		listeObjets.add(pioche);
-		
-		//Remplir l'inventaire de vide lors de l'iniatilisation
-		}
+
+	}
 	
 	//METHODE AJOUTER OBJET intelligemment
 	public void ajouterObjet(Objet p) {
@@ -44,6 +43,7 @@ public class Inventaire {
 	public ArrayList<Objet> getListeObjet() {
 		return this.listeObjets;
 	}
-
+	
+	//public void get
 	
 }

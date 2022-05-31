@@ -1,15 +1,20 @@
 package application.controleur;
 
 import application.modele.Heros;
+import application.modele.Inventaire;
+import application.vue.InventaireVue;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
 public class KeyPressed implements EventHandler<KeyEvent>{
 	private Heros hero ;
+	private InventaireVue inventaire ; 
+	
 	
 
-	public KeyPressed(Heros hero) {
+	public KeyPressed(Heros hero, InventaireVue inventaire ) {
 		this.hero = hero;
+		this.inventaire = inventaire ;
 	}
 
 	@Override
@@ -28,9 +33,18 @@ public class KeyPressed implements EventHandler<KeyEvent>{
 			System.out.println("sauter");
 			this.hero.setDirection(3);
 			break;
+		case I:
+			System.out.println("menu");
+			if(!this.inventaire.getafficheInventaire())
+				this.inventaire.afficherInventaire();
+			else 
+				this.inventaire.desafficherInventaire();
+			
+			break ;
 		default:
 			break;
 			
 		}
 	}
+	
 }
