@@ -14,11 +14,12 @@ public class Terrain {
 	private List<String> listeTerrain;
 
 	public Terrain() throws IOException {
-		File file = new File("/home/etudiants/info/nfenollosa/eclipseworkspace/bArbituriQueAdventUreSprint2/src/application/ressource/FirstMap.csv");
+		String file = "src/application/ressource/map2.csv";
+		
 		this.listeTerrain = readFile(file);
 	}
-	
-	public List<String> readFile(File file) throws IOException {
+
+	public List<String> readFile(String file) throws IOException {
 	
 		List<String> listeParLigne = new ArrayList<String>();
 		List<String> resultat = new ArrayList<String>();

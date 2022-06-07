@@ -1,5 +1,6 @@
 package application.vue;
 
+
 import java.util.List;
 
 import application.controleur.ControleurTuileCliquée;
@@ -17,26 +18,20 @@ public class TerrainVue extends TilePane{
 	
 	public TerrainVue(Terrain ter) {
 		super();
-		this.setPrefColumns(20);
+		this.setPrefColumns(30);
 		this.terrain = ter;
 		initCarte();
 	}
 
 	public void initCarte() {
+		String chemin;
 		ImageView img = null;
 		List<String> terrain = this.terrain.getListeTerrain();
+		System.out.println(terrain);
 		for (int i=0; i < terrain.size(); i++) {
-			switch (terrain.get(i)) {
-			case "-1":
-				img = new ImageView(new Image("application/ressource/tile-1.png"));
-				break;
-			case "20":
-				img = new ImageView(new Image("application/ressource/tile20.png"));
-				break;
-			case "21":
-				img = new ImageView(new Image("application/ressource/tile21.png"));
-				break;
-			}
+			chemin = "application/ressource/tile" +terrain.get(i)+ ".png";
+			img = new ImageView(new Image(chemin));
+
 			this.getChildren().add(img);
 			img.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, new ControleurTuileSurvolée());
 			img.addEventHandler(MouseEvent.MOUSE_EXITED, new ControleurTuileQuittée());

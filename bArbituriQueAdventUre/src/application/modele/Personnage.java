@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 public abstract class Personnage {
 	
-		private final static int VITESSEMAX = 4;
+		private final static int VITESSEMAX = 3;
 		private final static int SAUTMAX = 10;
 
 		private IntegerProperty x, y;
@@ -40,23 +40,22 @@ public abstract class Personnage {
 		}
 		
 		public void augmenterVitesseDroite() {
-			if (!colision.blockDroitVide(this.x.getValue(), this.y.getValue()))
+			if (!colision.blockDroitVide(this.x.getValue(), this.y.getValue()) || !colision.blockDroitVide(this.x.getValue(), this.y.getValue() + 16))
 				this.vitesseHotizontale = 0;
 			else if (vitesseHotizontale < VITESSEMAX)
 				this.vitesseHotizontale ++;
 		}
 		
 		public void augmenterVitesseGauche() {
-			if (!colision.blockGaucheVide(this.x.getValue(), this.y.getValue()))
+			if (!colision.blockGaucheVide(this.x.getValue(), this.y.getValue()) || !colision.blockGaucheVide(this.x.getValue(), this.y.getValue() + 16))
 				this.vitesseHotizontale = 0;
 			else if (vitesseHotizontale > -VITESSEMAX)
-				this.vitesseHotizontale --;
+				this.vitesseHotizontale -- ;
 		}
 		
+		
 		public void augmenterVitesseHaut() {
-			if (!colision.blockDessusVide(this.x.getValue(), this.y.getValue()))
-				this.vitesseVerticale = 0;
-			else if (vitesseVerticale < SAUTMAX)
+			if (!colision.blockDessousVide(this.x.getValue(), this.y.getValue()) && colision.blockDessusVide(this.x.getValue(), this.y.getValue()) && colision.blockDessusVide(this.x.getValue() + 16, this.y.getValue()))
 				this.vitesseVerticale =- 50;
 		}
 		
@@ -66,13 +65,15 @@ public abstract class Personnage {
 		}
 		
 		public void gravite() {
-			if (colision.blockDessousVide(this.x.getValue(), this.y.getValue()))
-				this.vitesseVerticale =+ 2;
+			if (colision.blockDessousVide(this.x.getValue(), this.y.getValue()) && colision.blockDessousVide(this.x.getValue() + 16, this.y.getValue()))
+				this.vitesseVerticale =+ 3;
 			else
 				this.vitesseVerticale = 0;
 		}
 		
-
+		public void limiteTerrain() {
+			//programmer les limites du terrain
+		}
 		
 		public void seDeplacer() {
 			this.x.setValue(this.x.getValue() + vitesseHotizontale);

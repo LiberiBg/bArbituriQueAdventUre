@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
 public class KeyReleased implements EventHandler<KeyEvent>{
+	
 	private Heros hero ;
 	
 

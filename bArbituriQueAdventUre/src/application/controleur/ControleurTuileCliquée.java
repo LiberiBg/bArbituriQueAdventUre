@@ -15,7 +15,7 @@ public class ControleurTuileCliquée implements EventHandler<MouseEvent> {
 		this.indiceTuile = indice;
 		this.terrain = terrain;
 	}
-	
+
 	@Override
 	public void handle(MouseEvent event) {
 		ImageView img = (ImageView) event.getSource();

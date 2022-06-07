@@ -30,9 +30,7 @@ public class Controleur implements Initializable{
 	private Pane environnementPane;
 
 	private Timeline gameLoop;
-	
-	private Heros hero;
-	
+		
 	private Environnement environnement;
 	
 	//private Pane InventairePane;
@@ -71,7 +69,6 @@ public class Controleur implements Initializable{
 				(ev -> {
 					this.environnement.getHero().seDeplacer();
 					this.environnement.getHero().gravite();
-					//FAIRE LA GRAVITE
 				}));
 		this.gameLoop.getKeyFrames().add(kf);
 		this.gameLoop.play();
