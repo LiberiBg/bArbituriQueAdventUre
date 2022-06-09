@@ -5,9 +5,7 @@ import java.util.ResourceBundle;
 
 import application.modele.Environnement;
 import application.modele.Heros;
-import application.modele.Inventaire;
-import application.modele.Objet;
-import application.modele.outils.Hache;
+import application.vue.BatmanVue;
 import application.vue.HerosVue;
 import application.vue.InventaireVue;
 import application.vue.TerrainVue;
@@ -45,6 +43,9 @@ public class Controleur implements Initializable{
 		HerosVue heroVue = new HerosVue("application/ressource/sprite.png", environnement.getHero());
 		environnementPane.getChildren().add(heroVue);
 		
+		BatmanVue batmanVue = new BatmanVue("application/ressource/litleBatman.jpg", environnement.getBatman());
+		environnementPane.getChildren().add(batmanVue);
+		
 		InventaireVue InventaireVue = new InventaireVue(environnement.getInventaire());
 		root.addEventHandler(KeyEvent.KEY_PRESSED, new KeyPressed(environnement.getHero(), InventaireVue));
 		root.addEventHandler(KeyEvent.KEY_RELEASED, new KeyReleased(environnement.getHero()));
@@ -54,10 +55,7 @@ public class Controleur implements Initializable{
 		gameLoop.play();
 		
 		environnementPane.getChildren().add(InventaireVue);
-		//Hache hache = new Hache(1,1,1);
-		//environnement.getInventaire().ajouterObjet(hache);
-		System.out.println("oui");
-		System.out.println(environnement.getInventaire().getListeObjet());
+		
 	}
 
 	private void initAnimation() {
@@ -69,6 +67,11 @@ public class Controleur implements Initializable{
 				(ev -> {
 					this.environnement.getHero().seDeplacer();
 					this.environnement.getHero().gravite();
+
+					this.environnement.getBatman().seDeplacer();
+					this.environnement.getBatman().gravite();
+					this.environnement.getBatman().seDeplace();
+
 				}));
 		this.gameLoop.getKeyFrames().add(kf);
 		this.gameLoop.play();

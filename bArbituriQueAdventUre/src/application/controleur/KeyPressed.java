@@ -11,6 +11,7 @@ public class KeyPressed implements EventHandler<KeyEvent>{
 	
 	
 
+
 	public KeyPressed(Heros hero, InventaireVue inventaire ) {
 		this.hero = hero;
 		this.inventaire = inventaire ;
