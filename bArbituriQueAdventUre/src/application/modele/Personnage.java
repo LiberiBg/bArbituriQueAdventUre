@@ -55,7 +55,7 @@ public abstract class Personnage {
 		
 		
 		public void augmenterVitesseHaut() {
-			if (!colision.blockDessousVide(this.x.getValue(), this.y.getValue()) && colision.blockDessusVide(this.x.getValue() + 8, this.y.getValue()))
+			if (!colision.blockDessousVide(this.x.getValue() + 8, this.y.getValue()) && colision.blockDessusVide(this.x.getValue() + 8, this.y.getValue()))
 				this.vitesseVerticale =- 50;
 		}
 		
@@ -65,8 +65,8 @@ public abstract class Personnage {
 		}
 		
 		public void gravite() {
-			if (colision.blockDessousVide(this.x.getValue() - 2, this.y.getValue()) && colision.blockDessousVide(this.x.getValue() + 14, this.y.getValue()))
-				this.vitesseVerticale =+ 3;
+			if (colision.blockDessousVide(this.x.getValue() + 2, this.y.getValue()) && colision.blockDessousVide(this.x.getValue() + 14, this.y.getValue()))
+				this.vitesseVerticale =+ 2;
 			else
 				this.vitesseVerticale = 0;
 		}
