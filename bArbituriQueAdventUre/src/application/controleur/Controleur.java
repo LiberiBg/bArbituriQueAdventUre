@@ -8,6 +8,7 @@ import application.modele.Heros;
 import application.modele.Inventaire;
 import application.modele.Objet;
 import application.modele.outils.Hache;
+import application.vue.BatmanVue;
 import application.vue.HerosVue;
 import application.vue.InventaireVue;
 import application.vue.TerrainVue;
@@ -47,6 +48,9 @@ public class Controleur implements Initializable{
 		HerosVue heroVue = new HerosVue("application/ressource/sprite.png", environnement.getHero());
 		environnementPane.getChildren().add(heroVue);
 		
+		BatmanVue batmanVue = new BatmanVue("application/ressource/litleBatman.jpg", environnement.getBatman());
+		environnementPane.getChildren().add(batmanVue);
+		
 		InventaireVue InventaireVue = new InventaireVue(environnement.getInventaire());
 		root.addEventHandler(KeyEvent.KEY_PRESSED, new KeyPressed(environnement.getHero(), InventaireVue));
 		root.addEventHandler(KeyEvent.KEY_RELEASED, new KeyReleased(environnement.getHero()));
@@ -68,6 +72,7 @@ public class Controleur implements Initializable{
 				(ev -> {
 					this.environnement.getHero().seDeplacer();
 					this.environnement.getHero().gravite();
+					this.environnement.getBatman().gravite();
 					//FAIRE LA GRAVITE
 				}));
 		this.gameLoop.getKeyFrames().add(kf);

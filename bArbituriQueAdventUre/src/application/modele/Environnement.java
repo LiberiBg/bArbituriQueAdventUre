@@ -9,6 +9,7 @@ public class Environnement {
 	private Terrain terrain;
 	private Inventaire inventaire ;
 	private Heros hero;
+	private Batman batman;
 
 	public Environnement() {
 		this.listePersonnage = new ArrayList<Personnage>();
@@ -20,6 +21,7 @@ public class Environnement {
 			e.printStackTrace();
 		}
 		hero = new Heros(60, 40, terrain);
+		batman = new Batman(60, 20, terrain);
 	}
 
 
@@ -54,6 +56,11 @@ public class Environnement {
 	
 	public Heros getHero() {
 		return this.hero;
+	}
+
+
+	public Batman getBatman() {
+		return this.batman;
 	}
 	
 
