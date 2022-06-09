@@ -5,9 +5,6 @@ import java.util.ResourceBundle;
 
 import application.modele.Environnement;
 import application.modele.Heros;
-import application.modele.Inventaire;
-import application.modele.Objet;
-import application.modele.outils.Hache;
 import application.vue.BatmanVue;
 import application.vue.HerosVue;
 import application.vue.InventaireVue;
@@ -72,7 +69,9 @@ public class Controleur implements Initializable{
 				(ev -> {
 					this.environnement.getHero().seDeplacer();
 					this.environnement.getHero().gravite();
+					this.environnement.getBatman().seDeplacer();
 					this.environnement.getBatman().gravite();
+					this.environnement.getBatman().seDeplace();
 					//FAIRE LA GRAVITE
 				}));
 		this.gameLoop.getKeyFrames().add(kf);
