@@ -19,14 +19,12 @@ public class KeyReleased implements EventHandler<KeyEvent>{
 		// VIRER LA DIRECTION ET QUAND ON LACHE LA TOUCHE LA VITESSE ASSOCIEE BAISSE JUSQUA L'ARRET
 		switch(event.getCode()) {
 		case Q:
-			System.out.println("Gauche STOP");
+//			System.out.println("Gauche STOP");
 			this.hero.ralentir();
-//			this.hero.setDirection(0);
 			break ;
 		case D :
-			System.out.println("Droite STOP");
+//			System.out.println("Droite STOP");
 			this.hero.ralentir();
-//			this.hero.setDirection(0);
 			break;
 		default:
 			break;
