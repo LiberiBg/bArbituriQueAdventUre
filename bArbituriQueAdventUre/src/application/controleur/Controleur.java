@@ -71,6 +71,8 @@ public class Controleur implements Initializable{
 					this.environnement.getBatman().seDeplacer();
 					this.environnement.getBatman().gravite();
 					this.environnement.getBatman().seDeplace();
+					
+					this.environnement.getBatman().attaqueHero(this.environnement.getHero().getX(), this.environnement.getHero().getY());
 
 				}));
 		this.gameLoop.getKeyFrames().add(kf);

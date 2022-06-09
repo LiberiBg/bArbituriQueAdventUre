@@ -7,16 +7,19 @@ public class Batman extends Personnage {
 	}
 	
 	public void seDeplace () {
-		double x= Math.random();
-		if (x <0.5)
+		double n= Math.random();
+		if (n <0.5)
 			this.augmenterVitesseGauche();
 		else
 			this.augmenterVitesseDroite();
 	}
 	
 	
-	public void attaqueHero () {
-		
+	public void attaqueHero (int Xhero, int Yhero) {
+		if (Math.abs(this.getX() - Xhero) < 10) {
+			System.out.println(this.getX() - Xhero);
+			System.out.println("ATAK");
+		}
 	}
 	
 	

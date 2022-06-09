@@ -2,6 +2,7 @@ package application.modele;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import application.modele.Batman;
 
 public class Environnement {
 
