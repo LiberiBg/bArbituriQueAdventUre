@@ -14,7 +14,7 @@ public class Terrain {
 	private List<String> listeTerrain;
 
 	public Terrain() throws IOException {
-		String file = "src/application/ressource/map2.csv";
+		String file = Parametres.getCheminTerrain();
 		
 		this.listeTerrain = readFile(file);
 	}

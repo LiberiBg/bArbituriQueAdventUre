@@ -13,7 +13,13 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
@@ -36,6 +42,16 @@ public class Controleur implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		Image img = new Image("application/ressource/bg.png");
+		BackgroundImage bgimg = new BackgroundImage(
+				img,
+				BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT,
+				BackgroundPosition.DEFAULT,
+				BackgroundSize.DEFAULT
+				);
+		Background bg = new Background(bgimg);
+		root.setBackground(bg);
 		environnement = new Environnement();
 		TerrainVue terrainVue = new TerrainVue(environnement.getTerrain());
 		environnementPane.getChildren().add(terrainVue);
