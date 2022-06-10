@@ -7,6 +7,7 @@ import application.controleur.ControleurTuileCliquée;
 import application.controleur.ControleurTuileQuittée;
 import application.controleur.ControleurTuileSurvolée;
 import application.modele.Heros;
+import application.modele.Parametres;
 import application.modele.Terrain;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,7 +21,8 @@ public class TerrainVue extends TilePane{
 	
 	public TerrainVue(Terrain ter, Heros hero) {
 		super();
-		this.setPrefColumns(30);
+		this.setPrefColumns(Parametres.getNbrcolonnes());
+		this.setPrefRows(Parametres.getNbrlignes());
 		this.terrain = ter;
 		this.hero = hero;
 		initCarte();
