@@ -9,8 +9,10 @@ import application.vue.BatmanVue;
 import application.vue.HerosVue;
 import application.vue.InventaireVue;
 import application.vue.TerrainVue;
+import application.vue.VieVue;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.KeyEvent;
@@ -31,6 +33,9 @@ public class Controleur implements Initializable{
 		
 	private Environnement environnement;
 	
+	@FXML
+	private VieVue vieVue;
+	
 	//private Pane InventairePane;
 	
 	@Override
@@ -43,7 +48,7 @@ public class Controleur implements Initializable{
 		HerosVue heroVue = new HerosVue("application/ressource/sprite.png", environnement.getHero());
 		environnementPane.getChildren().add(heroVue);
 		
-		BatmanVue batmanVue = new BatmanVue("application/ressource/litleBatman.jpg", environnement.getBatman());
+		BatmanVue batmanVue = new BatmanVue("application/ressource/litlebatman.png", environnement.getBatman());
 		environnementPane.getChildren().add(batmanVue);
 		
 		InventaireVue InventaireVue = new InventaireVue(environnement.getInventaire());
@@ -55,6 +60,13 @@ public class Controleur implements Initializable{
 		gameLoop.play();
 		
 		environnementPane.getChildren().add(InventaireVue);
+		
+		this.vieVue = new VieVue(root, environnement.getHero().vieProperty());
+		environnementPane.getChildren().add(vieVue);
+		
+		//listener vie
+		environnement.getHero().vieProperty().addListener(new VieListener(this.vieVue, environnement.getHero()));
+		
 		
 	}
 
@@ -72,8 +84,8 @@ public class Controleur implements Initializable{
 					this.environnement.getBatman().gravite();
 					this.environnement.getBatman().seDeplace();
 					
-					this.environnement.getBatman().attaqueHero(this.environnement.getHero().getX(), this.environnement.getHero().getY());
-
+					this.environnement.getBatman().attaqueHero(this.environnement.getHero());
+					
 				}));
 		this.gameLoop.getKeyFrames().add(kf);
 		this.gameLoop.play();

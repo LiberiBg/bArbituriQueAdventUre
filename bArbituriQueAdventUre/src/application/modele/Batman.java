@@ -3,7 +3,7 @@ package application.modele;
 public class Batman extends Personnage {
 	
 	public Batman (int x, int y, Terrain terrain) {
-		super(x, y, terrain);
+		super(x, y, terrain, 200);
 	}
 	
 	public void seDeplace () {
@@ -12,13 +12,18 @@ public class Batman extends Personnage {
 			this.augmenterVitesseGauche();
 		else
 			this.augmenterVitesseDroite();
+		double m= Math.random();
+		if (m <0.05)
+			this.augmenterVitesseHaut();
+		
 	}
 	
 	
-	public void attaqueHero (int Xhero, int Yhero) {
-		if (Math.abs(this.getX() - Xhero) < 10) {
-			System.out.println(this.getX() - Xhero);
+	public void attaqueHero (Heros hero) {
+		if (Math.abs(this.getX() - hero.getX()) < 16) {
 			System.out.println("ATAK");
+			hero.setVie(hero.getVie() - 1);
+			System.out.println(hero.getVie());
 		}
 	}
 	

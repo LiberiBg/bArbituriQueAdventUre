@@ -6,21 +6,22 @@ import javafx.beans.property.SimpleIntegerProperty;
 public abstract class Personnage {
 	
 		private final static int VITESSEMAX = 3;
-		private final static int SAUTMAX = 10;
+//		private final static int SAUTMAX = 10;
 
 		private IntegerProperty x, y;
-		private int vie;
+		private IntegerProperty vie;
 		private int vitesseHotizontale, vitesseVerticale;
 		private Terrain terrain;
 		private Colision colision;
 		
-		public Personnage(int x, int y, Terrain terrain) {
+		public Personnage(int x, int y, Terrain terrain, int vie) {
 			this.x= new SimpleIntegerProperty(x);
 			this.y = new SimpleIntegerProperty(y);
 			this.terrain = terrain;
 			this.colision = new Colision(terrain);
 			this.vitesseHotizontale = 0;
 			this.vitesseVerticale = 0;
+			this.vie = new SimpleIntegerProperty(vie);
 		}
 		
 		public IntegerProperty XProperty() {
@@ -48,14 +49,14 @@ public abstract class Personnage {
 		}
 		
 		public void augmenterVitesseDroite() {
-			if (!colision.blockDroitVide(this.x.getValue(), this.y.getValue()) || !colision.blockDroitVide(this.x.getValue(), this.y.getValue() + 16))
+			if (!colision.blockDroitVide(this.x.getValue(), this.y.getValue()) || !colision.blockDroitVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() > 30*16)
 				this.vitesseHotizontale = 0;
 			else if (vitesseHotizontale < VITESSEMAX)
 				this.vitesseHotizontale ++;
 		}
 		
 		public void augmenterVitesseGauche() {
-			if (!colision.blockGaucheVide(this.x.getValue(), this.y.getValue()) || !colision.blockGaucheVide(this.x.getValue(), this.y.getValue() + 16))
+			if (!colision.blockGaucheVide(this.x.getValue(), this.y.getValue()) || !colision.blockGaucheVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() < 0)
 				this.vitesseHotizontale = 0;
 			else if (vitesseHotizontale > -VITESSEMAX)
 				this.vitesseHotizontale -- ;
@@ -64,7 +65,7 @@ public abstract class Personnage {
 		
 		public void augmenterVitesseHaut() {
 			if (!colision.blockDessousVide(this.x.getValue() + 8, this.y.getValue()) && colision.blockDessusVide(this.x.getValue() + 8, this.y.getValue()))
-				this.vitesseVerticale =- 50;
+				this.vitesseVerticale =- 48;
 		}
 		
 		public void ralentir() {
@@ -86,10 +87,22 @@ public abstract class Personnage {
 		public void seDeplacer() {
 			this.x.setValue(this.x.getValue() + vitesseHotizontale);
 			this.y.setValue(this.y.getValue() + vitesseVerticale);
-			if (!colision.blockGaucheVide(this.x.getValue(), this.y.getValue()) || !colision.blockGaucheVide(this.x.getValue(), this.y.getValue() + 16))
+			if (!colision.blockGaucheVide(this.x.getValue(), this.y.getValue()) || !colision.blockGaucheVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() < 0)
 				this.vitesseHotizontale = 0;
-			if (!colision.blockDroitVide(this.x.getValue(), this.y.getValue()) || !colision.blockDroitVide(this.x.getValue(), this.y.getValue() + 16))
+			if (!colision.blockDroitVide(this.x.getValue(), this.y.getValue()) || !colision.blockDroitVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() > 30*16)
 				this.vitesseHotizontale = 0;
 		}
 		
+		public int getVie() {
+			return this.vie.getValue();
+		}
+		
+		public IntegerProperty vieProperty() {
+			return this.vie;
+		}
+		
+		public void setVie(int vie) {
+			this.vie.setValue(vie);
+		}
+
 }
