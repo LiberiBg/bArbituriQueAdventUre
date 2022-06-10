@@ -4,10 +4,9 @@ import java.util.List;
 
 public class Colision {
 	
-	private int x, y;
 	private List<String> blocks;
 	private String id;
-	
+	private final static int col = Parametres.getNbrcolonnes();
 	public Colision (Terrain terrain) {
 		this.blocks = terrain.getListeTerrain();
 	}
@@ -15,7 +14,7 @@ public class Colision {
 	public boolean blockDessousVide (int x, int y) {
 		x = x/16;
 		y = y/16;
-		x = x + y*30 + 60;
+		x = x + y * col + col * 2;
 		id = blocks.get(x);
 		return estVide(id);
 	}
@@ -23,7 +22,7 @@ public class Colision {
 	public boolean blockDessusVide (int x, int y) {
 		x = x/16;
 		y = y/16;
-		x = x + y*30 - 30;
+		x = x + y * col - col;
 		id = blocks.get(x);
 		return estVide(id);
 	}
@@ -31,7 +30,7 @@ public class Colision {
 	public boolean blockDroitVide (int x, int y) {
 		x = x/16;
 		y = y/16;
-		x = x + y*30 + 1;
+		x = x + y * col + 1;
 		id = blocks.get(x);
 		return estVide(id);
 	}
@@ -39,7 +38,7 @@ public class Colision {
 	public boolean blockGaucheVide (int x, int y) {
 		x = x/16;
 		y = y/16;
-		x = x + y*30;
+		x = x + y * col;
 		id = blocks.get(x);
 		return estVide(id);
 	}
