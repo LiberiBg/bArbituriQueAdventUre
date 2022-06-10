@@ -2,6 +2,7 @@ package application.modele;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import application.modele.Batman;
 
 public class Environnement {
 
@@ -21,7 +22,7 @@ public class Environnement {
 			e.printStackTrace();
 		}
 		hero = new Heros(60, 40, terrain);
-		batman = new Batman(60, 5, terrain);
+		batman = new Batman(150, 5, terrain);
 	}
 
 
