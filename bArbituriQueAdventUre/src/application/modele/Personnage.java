@@ -39,6 +39,14 @@ public abstract class Personnage {
 			y.setValue(n);
 		}
 		
+		public int getX() {
+			return x.getValue();
+		}
+		
+		public int getY() {
+			return y.getValue();
+		}
+		
 		public void augmenterVitesseDroite() {
 			if (!colision.blockDroitVide(this.x.getValue(), this.y.getValue()) || !colision.blockDroitVide(this.x.getValue(), this.y.getValue() + 16))
 				this.vitesseHotizontale = 0;

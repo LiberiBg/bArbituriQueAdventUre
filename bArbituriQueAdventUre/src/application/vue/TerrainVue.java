@@ -6,6 +6,7 @@ import java.util.List;
 import application.controleur.ControleurTuileCliquée;
 import application.controleur.ControleurTuileQuittée;
 import application.controleur.ControleurTuileSurvolée;
+import application.modele.Heros;
 import application.modele.Terrain;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,11 +16,13 @@ import javafx.scene.layout.TilePane;
 public class TerrainVue extends TilePane{
 	
 	Terrain terrain;
+	Heros hero;
 	
-	public TerrainVue(Terrain ter) {
+	public TerrainVue(Terrain ter, Heros hero) {
 		super();
 		this.setPrefColumns(30);
 		this.terrain = ter;
+		this.hero = hero;
 		initCarte();
 	}
 
@@ -35,7 +38,7 @@ public class TerrainVue extends TilePane{
 			this.getChildren().add(img);
 			img.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, new ControleurTuileSurvolée());
 			img.addEventHandler(MouseEvent.MOUSE_EXITED, new ControleurTuileQuittée());
-			img.addEventHandler(MouseEvent.MOUSE_CLICKED, new ControleurTuileCliquée(i, this.terrain));
+			img.addEventHandler(MouseEvent.MOUSE_CLICKED, new ControleurTuileCliquée(i, this.terrain, this.hero));
 		}
 		
 	}

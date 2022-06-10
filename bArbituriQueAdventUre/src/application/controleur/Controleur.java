@@ -37,7 +37,7 @@ public class Controleur implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 
 		environnement = new Environnement();
-		TerrainVue terrainVue = new TerrainVue(environnement.getTerrain());
+		TerrainVue terrainVue = new TerrainVue(environnement.getTerrain(), environnement.getHero());
 		environnementPane.getChildren().add(terrainVue);
 
 		HerosVue heroVue = new HerosVue("application/ressource/sprite.png", environnement.getHero());
