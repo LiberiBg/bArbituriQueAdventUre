@@ -21,6 +21,12 @@ public class HerosVue extends ImageView {
 		this.translateYProperty().bind(this.hero.YProperty());
 		System.out.println("it works");
 	}
+	
+	public void mettreAJourSpriteDuHero() {
+		if(this.hero.getObjetPorté() != null) {
+			this.setImage(new Image("application/ressource/Sprite/" + this.hero.getObjetPorté().getId() + ".png"));
+		}
+	}
 		
 }
 		

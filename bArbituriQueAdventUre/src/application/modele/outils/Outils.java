@@ -6,10 +6,13 @@ public abstract class Outils extends Objet{
 	
 	private double degat;
 	
-	public Outils(int id, int quantité, int quantitéMax) {
+	public Outils(String id, int quantité, int quantitéMax) {
 		super(id, quantité, quantitéMax);
-		// TODO Auto-generated constructor stub
 	}
+
+	
+	
+	
 
 
 

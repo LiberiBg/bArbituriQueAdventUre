@@ -37,11 +37,7 @@ public class KeyPressed implements EventHandler<KeyEvent>{
 //			this.hero.setDirection(3);
 			break;
 		case I:
-			System.out.println("menu");
-			if(!this.inventaire.getafficheInventaire())
-				this.inventaire.afficherInventaire();
-			else 
-				this.inventaire.desafficherInventaire();
+			this.inventaire.switchAffichageInventaire();
 			break ;
 		default:
 			break;

@@ -16,6 +16,10 @@ public class Heros extends Personnage{
 	public void ekipHero(Objet itemEquipe) {
 		this.objetPorté = itemEquipe;
 	}
+
+	public Objet getObjetPorté() {
+		return objetPorté;
+	}
 	
 	
 	

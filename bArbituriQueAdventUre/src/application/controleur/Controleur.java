@@ -76,12 +76,12 @@ public class Controleur implements Initializable{
 		gameLoop.play();
 		
 		environnementPane.getChildren().add(InventaireVue);
-		
-		this.vieVue = new VieVue(root, environnement.getHero().vieProperty());
-		environnementPane.getChildren().add(vieVue);
-		
-		//listener vie
-		environnement.getHero().vieProperty().addListener(new VieListener(this.vieVue, environnement.getHero()));
+//		
+//		this.vieVue = new VieVue(root, environnement.getHero().vieProperty());
+//		environnementPane.getChildren().add(vieVue);
+//		
+//		//listener vie
+//		environnement.getHero().vieProperty().addListener(new VieListener(this.vieVue, environnement.getHero()));
 		
 		
 	}
@@ -96,11 +96,11 @@ public class Controleur implements Initializable{
 					this.environnement.getHero().seDeplacer();
 					this.environnement.getHero().gravite();
 
-					this.environnement.getBatman().seDeplacer();
-					this.environnement.getBatman().gravite();
-					this.environnement.getBatman().seDeplace();
-					
-					this.environnement.getBatman().attaqueHero(this.environnement.getHero());
+//					this.environnement.getBatman().seDeplacer();
+//					this.environnement.getBatman().gravite();
+//					this.environnement.getBatman().seDeplace();
+//					
+//					this.environnement.getBatman().attaqueHero(this.environnement.getHero());
 					
 				}));
 		this.gameLoop.getKeyFrames().add(kf);

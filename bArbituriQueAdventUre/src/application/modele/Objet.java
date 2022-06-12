@@ -4,12 +4,10 @@ public abstract class Objet {
 	
 	private int quantité;
 	private int quantitéMax;
-	private int id ; 
+	private String id ; 
 
-	public Objet(int id , int quantité, int quantitéMax) {
-		this.setQuantité(quantité);
-		this.setQuantitéMax(quantitéMax);
-		this.id = id ;
+	public Objet(String id , int quantité, int quantitéMax) {
+		
 	}
 
 	public int getQuantitéMax() {
@@ -26,6 +24,10 @@ public abstract class Objet {
 
 	public void setQuantité(int quantité) {
 		this.quantité = quantité;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 }

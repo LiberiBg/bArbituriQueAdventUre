@@ -2,9 +2,8 @@ package application.modele.outils;
 
 public class Arc extends Outils{
 
-	public Arc(int id, int quantité, int quantitéMax) {
-		super(id, quantité, quantitéMax);
-		// TODO Auto-generated constructor stub
+	public Arc(String id, int quantité) {
+		super("Arc", quantité, 1);
 	}
 
 	
