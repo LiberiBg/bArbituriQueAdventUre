@@ -1,6 +1,6 @@
 package application.vue;
 
-import application.modele.Batman;
+import application.modele.personnages.Batman;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 

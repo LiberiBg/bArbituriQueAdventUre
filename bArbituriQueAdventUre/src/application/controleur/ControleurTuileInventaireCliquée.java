@@ -1,6 +1,6 @@
 package application.controleur;
 
-import application.modele.Heros;
+import application.modele.personnages.Heros;
 import application.vue.InventaireVue;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
@@ -22,6 +22,7 @@ public class ControleurTuileInventaireCliquée implements EventHandler<MouseEven
 	@Override
 	public void handle(MouseEvent arg0) {
 		this.hero.ekipHero(this.inventaireVue.getMapImageToObjet().get(this.imageCliquée));
+		System.out.println(this.hero.getObjetPorté());
 	}
 
 }

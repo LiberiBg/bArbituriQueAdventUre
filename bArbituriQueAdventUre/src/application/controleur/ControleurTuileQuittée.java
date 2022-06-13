@@ -12,6 +12,7 @@ public class ControleurTuileQuittée implements EventHandler<MouseEvent> {
 	
 	@Override
 	public void handle(MouseEvent event) {
+		
 		//applique une opacité totale lorsque la souris n'est plus sur la tuile
 				ImageView img = (ImageView) event.getSource();
 				img.setOpacity(1);

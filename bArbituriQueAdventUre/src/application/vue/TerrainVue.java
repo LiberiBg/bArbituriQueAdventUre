@@ -6,9 +6,9 @@ import java.util.List;
 import application.controleur.ControleurTuileCliquée;
 import application.controleur.ControleurTuileQuittée;
 import application.controleur.ControleurTuileSurvolée;
-import application.modele.Heros;
 import application.modele.Parametres;
 import application.modele.Terrain;
+import application.modele.personnages.Heros;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -34,7 +34,7 @@ public class TerrainVue extends TilePane{
 		List<String> terrain = this.terrain.getListeTerrain();
 		System.out.println(terrain);
 		for (int i=0; i < terrain.size(); i++) {
-			chemin = "application/ressource/tile" +terrain.get(i)+ ".png";
+			chemin = "application/ressource/tile/tile" +terrain.get(i)+ ".png";
 			img = new ImageView(new Image(chemin));
 
 			this.getChildren().add(img);

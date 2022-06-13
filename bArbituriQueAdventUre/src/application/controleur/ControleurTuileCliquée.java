@@ -1,8 +1,8 @@
 package application.controleur;
 
-import application.modele.Heros;
 import application.modele.Parametres;
 import application.modele.Terrain;
+import application.modele.personnages.Heros;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -33,7 +33,7 @@ public class ControleurTuileCliquée implements EventHandler<MouseEvent> {
 		//Si la tuile est trop éloignée il n'est pas possible de la détruire
 		if(Math.abs(hero.getX() - x) <= 32 && Math.abs(hero.getY() - y) <= 32) {
 			terrain.détuireBlocsSelonLIndice(indiceTuile);
-			img.setImage(new Image("application/ressource/tile-1.png"));
+			img.setImage(new Image("application/ressource/tile/tile-1.png"));
 		}
 	}
 }

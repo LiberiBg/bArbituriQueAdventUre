@@ -1,11 +1,11 @@
 package application.controleur;
 
-import application.modele.Heros;
+import application.modele.personnages.Heros;
 import application.vue.VieVue;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
-public class VieListener implements ChangeListener{
+public class VieListener implements ChangeListener<Number>{
 
 	private VieVue vieVue;
 	private Heros hero;
@@ -17,7 +17,7 @@ public class VieListener implements ChangeListener{
 	}
 
 	@Override
-	public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+	public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 		vieVue.reafficherVie(hero.getVie());
 		System.out.println("changed vie");
 	}

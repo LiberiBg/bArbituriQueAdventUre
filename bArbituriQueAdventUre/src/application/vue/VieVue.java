@@ -1,5 +1,6 @@
 package application.vue;
 
+import application.modele.Parametres;
 import javafx.beans.property.IntegerProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -7,9 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 public class VieVue extends Pane{
-	
-//	private BorderPane root;
-//	private Pane viePane;
+
 	private Image[] tabImages;
 	private ImageView imgV;
 	IntegerProperty vie;
@@ -17,19 +16,20 @@ public class VieVue extends Pane{
 	public VieVue(BorderPane root, IntegerProperty vie) {
 		super();
 		this.vie = vie;
-//		this = new Pane();
 		
 		this.tabImages = new Image[5];
-		this.setMaxHeight(20);
-		this.setMaxWidth(50);
-		this.setLayoutX(root.getPrefWidth() + this.getMaxWidth());
-		
+		this.setHeight(20);
+		this.setWidth(50);
+		this.setOpacity(0.8);
+		this.setLayoutX(Parametres.getNbrcolonnes() * 16 - 220);
 		for (int i=0; i < tabImages.length; i++) {
-			tabImages[i] = new Image("application/ressource/vie" + i + ".png");
+			tabImages[i] = new Image("application/ressource/vie/vie" + i + ".png");
 		}
 		
 		imgV = new ImageView(tabImages[0]);
+		
 		this.getChildren().add(imgV);
+		
 	}
 	
 	public void reafficherVie(int vie) {

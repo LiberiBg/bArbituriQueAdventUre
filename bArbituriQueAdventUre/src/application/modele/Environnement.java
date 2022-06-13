@@ -2,7 +2,10 @@ package application.modele;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import application.modele.Batman;
+
+import application.modele.personnages.Batman;
+import application.modele.personnages.Heros;
+import application.modele.personnages.Personnage;
 
 public class Environnement {
 
@@ -25,31 +28,17 @@ public class Environnement {
 		batman = new Batman(150, 5, terrain);
 	}
 
-
-	//Récupère le Hero dans la liste de tous les personnages
-	public Heros getHeros() {
-		for (Personnage p: listePersonnage) {
-			if (p instanceof Heros) {
-				return (Heros) p;
-			}
-		}
-		return null;
-	}
-
 	public void addPersonnage(Personnage p) {
 		this.listePersonnage.add(p);
 	}
-
 
 	public Terrain getTerrain() {
 		return terrain;
 	}
 
-
 	public void setTerrain(Terrain terrain) {
 		this.terrain = terrain;
 	}
-
 
 	public Inventaire getInventaire() {
 		return inventaire;
@@ -58,7 +47,6 @@ public class Environnement {
 	public Heros getHero() {
 		return this.hero;
 	}
-
 
 	public Batman getBatman() {
 		return this.batman;

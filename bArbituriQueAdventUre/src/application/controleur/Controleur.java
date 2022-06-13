@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.modele.Environnement;
-import application.modele.Heros;
 import application.vue.BatmanVue;
 import application.vue.HerosVue;
 import application.vue.InventaireVue;
@@ -41,12 +40,11 @@ public class Controleur implements Initializable{
 	
 	@FXML
 	private VieVue vieVue;
-	
-	//private Pane InventairePane;
-	
+		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		//Image de Fond
 		Image img = new Image("application/ressource/bg.png");
 		BackgroundImage bgimg = new BackgroundImage(
 				img,
@@ -57,33 +55,38 @@ public class Controleur implements Initializable{
 				);
 		Background bg = new Background(bgimg);
 		root.setBackground(bg);
+		
+		//Creation de l'environnement
 		environnement = new Environnement();
 		TerrainVue terrainVue = new TerrainVue(environnement.getTerrain(), environnement.getHero());
 		environnementPane.getChildren().add(terrainVue);
 
-		HerosVue heroVue = new HerosVue("application/ressource/sprite.png", environnement.getHero());
+		//Creation Vue du Hero
+		HerosVue heroVue = new HerosVue(environnement.getHero());
 		environnementPane.getChildren().add(heroVue);
 		
+		//Creation Vue de Batman
 		BatmanVue batmanVue = new BatmanVue("application/ressource/litlebatman.png", environnement.getBatman());
 		environnementPane.getChildren().add(batmanVue);
 		
-		InventaireVue InventaireVue = new InventaireVue(environnement.getInventaire());
+		//Creation de la vue de l'inventaire
+		InventaireVue InventaireVue = new InventaireVue(environnement.getHero());
+		environnementPane.getChildren().add(InventaireVue);
+		
+		//Creation de la vue de la vie
+		this.vieVue = new VieVue(root, environnement.getHero().vieProperty());
+		environnementPane.getChildren().add(vieVue);
+		
+		//listener vie
+		environnement.getHero().vieProperty().addListener(new VieListener(this.vieVue, environnement.getHero()));
+		
+		//KeyEvent
 		root.addEventHandler(KeyEvent.KEY_PRESSED, new KeyPressed(environnement.getHero(), InventaireVue));
 		root.addEventHandler(KeyEvent.KEY_RELEASED, new KeyReleased(environnement.getHero()));
 		
+		//Début de l'animation et de la gameloop
 		initAnimation();
-		//demarre l'animation
 		gameLoop.play();
-		
-		environnementPane.getChildren().add(InventaireVue);
-//		
-//		this.vieVue = new VieVue(root, environnement.getHero().vieProperty());
-//		environnementPane.getChildren().add(vieVue);
-//		
-//		//listener vie
-//		environnement.getHero().vieProperty().addListener(new VieListener(this.vieVue, environnement.getHero()));
-		
-		
 	}
 
 	private void initAnimation() {
@@ -96,11 +99,11 @@ public class Controleur implements Initializable{
 					this.environnement.getHero().seDeplacer();
 					this.environnement.getHero().gravite();
 
-//					this.environnement.getBatman().seDeplacer();
-//					this.environnement.getBatman().gravite();
-//					this.environnement.getBatman().seDeplace();
-//					
-//					this.environnement.getBatman().attaqueHero(this.environnement.getHero());
+					this.environnement.getBatman().seDeplacer();
+					this.environnement.getBatman().gravite();
+					this.environnement.getBatman().seDeplace();
+					
+					this.environnement.getBatman().attaqueHero(this.environnement.getHero());
 					
 				}));
 		this.gameLoop.getKeyFrames().add(kf);

@@ -1,6 +1,7 @@
 package application.vue;
 
-import application.modele.Heros;
+import application.modele.Parametres;
+import application.modele.personnages.Heros;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -8,9 +9,9 @@ public class HerosVue extends ImageView {
 
 	private Heros hero;
 
-	public HerosVue(String url, Heros hero) {
+	public HerosVue(Heros hero) {
 		super();
-        setImage(new Image(url));
+        setImage(new Image(Parametres.getCheminspritehero()));
         this.hero = hero ;
         initJoueur();
     }
@@ -20,13 +21,6 @@ public class HerosVue extends ImageView {
 		this.translateXProperty().bind(this.hero.XProperty());
 		this.translateYProperty().bind(this.hero.YProperty());
 		System.out.println("it works");
-	}
-	
-	public void mettreAJourSpriteDuHero() {
-		if(this.hero.getObjetPorté() != null) {
-			this.setImage(new Image("application/ressource/Sprite/" + this.hero.getObjetPorté().getId() + ".png"));
-		}
-	}
-		
+	}	
 }
 		
