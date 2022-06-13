@@ -26,7 +26,13 @@ public class Heros extends Personnage{
 	public Inventaire getInventaire() {
 		return inventaire;
 	}
-	
-	
-	
+
+	public void soigner(int soinProdigué) {
+		this.setVie(getVie() + soinProdigué);
+		if(this.getVie() >= 100) {
+			this.setVie(100);
+		}
+	}
+
+
 }
