@@ -13,17 +13,23 @@ import javafx.scene.input.MouseEvent;
 
 public class ControleurTuileCliquée implements EventHandler<MouseEvent> {
 
-	private int indiceTuile;
+	private final int indiceTuile;
 	private Terrain terrain;
 	private List<String> listeTerrain;
 	private Heros hero;
 	private ImageView img;
+	private int vieArbre;
+	private final String idTuilecliquée;
+	private final String idTuileDuDessus;
 
 	public ControleurTuileCliquée(int indice, Terrain terrain, Heros hero) {
 		this.indiceTuile = indice;
 		this.terrain = terrain;
 		this.listeTerrain = this.terrain.getListeTerrain();
 		this.hero = hero;
+		this.idTuilecliquée = this.listeTerrain.get(indiceTuile);
+		this.idTuileDuDessus = this.listeTerrain.get(this.indiceTuile - Parametres.getNbrcolonnes());
+		this.vieArbre = 0;
 	}
 
 	@Override
@@ -57,12 +63,19 @@ public class ControleurTuileCliquée implements EventHandler<MouseEvent> {
 	}
 
 	public void baieRevigorante() {
-		if(this.listeTerrain.get(indiceTuile).equals("48")) {
+		if(this.idTuilecliquée.equals("48")) {
 			this.hero.soigner(20);
 		}
 	}
 
-	
+	public void initVieArbreEntier() {
+		if(this.idTuilecliquée.equals("23")) {
+			if(this.idTuileDuDessus.equals("23")) {
+				this.vieArbre =+ 50;
+			}
+		}
+	}
+
 }
 
 
