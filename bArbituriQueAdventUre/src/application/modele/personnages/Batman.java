@@ -29,6 +29,8 @@ public class Batman extends Personnage {
 		}
 	}
 	
-	
+	public void mort() {
+		
+	}
 
 }

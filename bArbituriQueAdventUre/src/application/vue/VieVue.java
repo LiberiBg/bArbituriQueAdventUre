@@ -43,7 +43,7 @@ public class VieVue extends Pane{
 		else if (vie >= 40)
 			imgV.setImage(tabImages[3]);
 		else if (vie >= 20)
-			imgV.setImage(tabImages[4]);
+			imgV.setImage(tabImages[4]);			
 	}
 	
 

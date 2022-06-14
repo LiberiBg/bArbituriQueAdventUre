@@ -1,10 +1,10 @@
 package application.controleur;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import application.modele.Parametres;
 import application.modele.Terrain;
+import application.modele.objet.outils.Pioche;
 import application.modele.personnages.Heros;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
@@ -52,8 +52,10 @@ public class ControleurTuileCliquée implements EventHandler<MouseEvent> {
 	}
 
 	public void détruireTuile() {
-		this.terrain.détuireBlocsSelonLIndice(this.indiceTuile);
-		this.img.setImage(new Image("application/ressource/tile/tile-1.png"));
+		if (hero.getObjetPorté() instanceof Pioche) {
+			this.terrain.détuireBlocsSelonLIndice(this.indiceTuile);
+			this.img.setImage(new Image("application/ressource/tile/tile-1.png"));
+		}
 	}
 
 	public void baieRevigorante() {

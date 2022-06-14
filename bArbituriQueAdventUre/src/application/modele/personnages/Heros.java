@@ -33,6 +33,13 @@ public class Heros extends Personnage{
 			this.setVie(100);
 		}
 	}
+	
+	public void attaquer(Personnage perso, int pv) {
+		perso.setVie(perso.getVie() - pv);
+	}
 
+	public void ajouterObjetSelonValeur(int val) {
+		
+	}
 
 }
