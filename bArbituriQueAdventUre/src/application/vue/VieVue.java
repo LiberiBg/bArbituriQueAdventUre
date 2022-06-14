@@ -11,11 +11,11 @@ public class VieVue extends Pane{
 
 	private Image[] tabImages;
 	private ImageView imgV;
-	IntegerProperty vie;
+	//IntegerProperty vie;
 	
 	public VieVue(BorderPane root, IntegerProperty vie) {
 		super();
-		this.vie = vie;
+		//this.vie = vie;
 		
 		this.tabImages = new Image[5];
 		this.setHeight(20);
