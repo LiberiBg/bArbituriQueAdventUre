@@ -4,18 +4,19 @@ import application.modele.Environnement;
 import application.modele.objet.outils.Epee;
 import application.vue.BatmanVue;
 import javafx.event.EventHandler;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class ControleurImageCliquée implements EventHandler<MouseEvent> {
 	
 	private Environnement env;
-	private BatmanVue batmanVue;
+	private ImageView imgV;
 	private Pane environnementPane;
 	
 	public ControleurImageCliquée(Environnement env, BatmanVue batmanVue, Pane environnementPane) {
 		this.env = env;
-		this.batmanVue = batmanVue;
+		this.imgV = batmanVue;
 		this.environnementPane = environnementPane;
 	}
 
@@ -27,7 +28,7 @@ public class ControleurImageCliquée implements EventHandler<MouseEvent> {
 		}
 		if (this.env.getBatman().getVie() == 0) {
 			this.env.mort();
-			environnementPane.getChildren().remove(batmanVue);
+			environnementPane.getChildren().remove(imgV);
 			System.out.println("MORT");
 		}
 	}
