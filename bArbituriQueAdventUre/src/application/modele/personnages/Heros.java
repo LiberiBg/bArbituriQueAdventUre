@@ -37,6 +37,13 @@ public class Heros extends Personnage{
 	public void ajouterALinvetaire(Objet o) {
 		this.inventaire.ajouterObjet(o);
 	}
+		
+	public void attaquer(Personnage perso, int pv) {
+		perso.setVie(perso.getVie() - pv);
+	}
 
+	public void ajouterObjetSelonValeur(int val) {
+		
+	}
 
 }

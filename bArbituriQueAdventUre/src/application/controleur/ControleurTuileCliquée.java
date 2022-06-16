@@ -1,14 +1,17 @@
 package application.controleur;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import application.Arbre;
 import application.modele.Parametres;
 import application.modele.Terrain;
+<<<<<<< HEAD
 import application.modele.objet.blocs.Bois;
 import application.modele.objet.outils.Hache;
 import application.modele.objet.outils.Outils;
+=======
+import application.modele.objet.outils.Pioche;
+>>>>>>> refs/heads/objets
 import application.modele.personnages.Heros;
 import application.vue.TerrainVue;
 import javafx.event.EventHandler;

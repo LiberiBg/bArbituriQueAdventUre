@@ -1,6 +1,7 @@
 package application.modele.personnages;
 
 import application.modele.Colision;
+import application.modele.Parametres;
 import application.modele.Terrain;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -48,7 +49,7 @@ public abstract class Personnage {
 		}
 		
 		public void augmenterVitesseDroite() {
-			if (!colision.blockDroitVide(this.x.getValue(), this.y.getValue()) || !colision.blockDroitVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() > 30*16)
+			if (!colision.blockDroitVide(this.x.getValue(), this.y.getValue()) || !colision.blockDroitVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() > Parametres.getNbrcolonnes()*16)
 				this.vitesseHotizontale = 0;
 			else if (vitesseHotizontale < VITESSEMAX)
 				this.vitesseHotizontale ++;
@@ -88,7 +89,7 @@ public abstract class Personnage {
 			this.y.setValue(this.y.getValue() + vitesseVerticale);
 			if (!colision.blockGaucheVide(this.x.getValue(), this.y.getValue()) || !colision.blockGaucheVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() < 0)
 				this.vitesseHotizontale = 0;
-			if (!colision.blockDroitVide(this.x.getValue(), this.y.getValue()) || !colision.blockDroitVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() > 30*16)
+			if (!colision.blockDroitVide(this.x.getValue(), this.y.getValue()) || !colision.blockDroitVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() > Parametres.getNbrcolonnes()*16)
 				this.vitesseHotizontale = 0;
 		}
 		
@@ -101,7 +102,10 @@ public abstract class Personnage {
 		}
 		
 		public void setVie(int vie) {
-			this.vie.setValue(vie);
+			if (vie >= 0 )
+				this.vie.setValue(vie);
+		
 		}
+		
 
 }
