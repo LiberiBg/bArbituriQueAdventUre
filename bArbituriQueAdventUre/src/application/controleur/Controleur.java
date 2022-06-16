@@ -39,6 +39,8 @@ public class Controleur implements Initializable{
 		
 	private Environnement environnement;
 	
+	private BatmanVue batmanVue;
+	
 	@FXML
 	private VieVue vieVue;
 		
@@ -67,7 +69,7 @@ public class Controleur implements Initializable{
 		environnementPane.getChildren().add(heroVue);
 		
 		//Creation Vue de Batman
-		BatmanVue batmanVue = new BatmanVue("application/ressource/litlebatman.png", environnement.getBatman(), environnement);
+		BatmanVue batmanVue = new BatmanVue("application/ressource/litlebatman.png", environnement.getBatman(), environnement, environnementPane);
 		environnementPane.getChildren().add(batmanVue);
 		
 		//Creation de la vue de l'inventaire
@@ -89,6 +91,7 @@ public class Controleur implements Initializable{
 		//Début de l'animation et de la gameloop
 		initAnimation();
 		gameLoop.play();
+		
 	}
 
 	private void initAnimation() {
@@ -100,13 +103,15 @@ public class Controleur implements Initializable{
 				(ev -> {
 					this.environnement.getHero().seDeplacer();
 					this.environnement.getHero().gravite();
-
-					this.environnement.getBatman().seDeplacer();
-					this.environnement.getBatman().gravite();
-//					this.environnement.getBatman().seDeplace();
 					
-					this.environnement.getBatman().attaqueHero(this.environnement.getHero());
-					
+					if (environnement.getBatman() != null) {
+						this.environnement.getBatman().seDeplacer();
+						this.environnement.getBatman().gravite();
+//						this.environnement.getBatman().seDeplace();					
+						this.environnement.getBatman().attaqueHero(this.environnement.getHero());
+					}
+					else 
+						environnementPane.getChildren().remove(batmanVue);
 				}));
 		this.gameLoop.getKeyFrames().add(kf);
 		this.gameLoop.play();

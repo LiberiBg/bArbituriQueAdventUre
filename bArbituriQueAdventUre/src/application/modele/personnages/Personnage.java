@@ -102,10 +102,9 @@ public abstract class Personnage {
 		}
 		
 		public void setVie(int vie) {
-			if (!(vie < 0 ))
+			if (vie >= 0 )
 				this.vie.setValue(vie);
-			//else 
-				//supprimer le sprite
+		
 		}
 		
 

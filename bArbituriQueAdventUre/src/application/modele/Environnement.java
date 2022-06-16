@@ -52,5 +52,8 @@ public class Environnement {
 		return this.batman;
 	}
 	
+	public void mort() {
+		this.batman = null;
+	}
 
 }
