@@ -3,7 +3,7 @@ package application.modele.objet.outils;
 public class Arc extends Outils{
 
 	public Arc(String id, int quantité) {
-		super("Arc", quantité, 1);
+		super("Arc", quantité, 20);
 	}
 
 	

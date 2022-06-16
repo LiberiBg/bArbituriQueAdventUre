@@ -40,10 +40,17 @@ public class TerrainVue extends TilePane{
 			this.getChildren().add(img);
 			img.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, new ControleurTuileSurvolée());
 			img.addEventHandler(MouseEvent.MOUSE_EXITED, new ControleurTuileQuittée());
-			img.addEventHandler(MouseEvent.MOUSE_CLICKED, new ControleurTuileCliquée(i, this.terrain, this.hero));
+			img.addEventHandler(MouseEvent.MOUSE_CLICKED, new ControleurTuileCliquée(i, this.terrain, this.hero, this));
 		}
 		
 	}
+
+	public void supprimerTuileDeLaVue(int indiceTuile) {
+		ImageView img = new ImageView(new Image("application/ressource/tile/tile-1.png"));
+		this.getChildren().set(indiceTuile, img);
+
+	}
+	
 	
 	
 }

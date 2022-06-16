@@ -79,7 +79,7 @@ public class Controleur implements Initializable{
 		
 		//listener vie
 		environnement.getHero().vieProperty().addListener(new VieListener(this.vieVue, environnement.getHero()));
-		
+		environnement.getHero().getInventaire().getListeObjet().addListener(new ListeObsObjet(InventaireVue));
 		//KeyEvent
 		root.addEventHandler(KeyEvent.KEY_PRESSED, new KeyPressed(environnement.getHero(), InventaireVue));
 		root.addEventHandler(KeyEvent.KEY_RELEASED, new KeyReleased(environnement.getHero()));
@@ -103,7 +103,7 @@ public class Controleur implements Initializable{
 					this.environnement.getBatman().gravite();
 					this.environnement.getBatman().seDeplace();
 					
-					this.environnement.getBatman().attaqueHero(this.environnement.getHero());
+//					this.environnement.getBatman().attaqueHero(this.environnement.getHero());
 					
 				}));
 		this.gameLoop.getKeyFrames().add(kf);
