@@ -33,6 +33,10 @@ public class Heros extends Personnage{
 			this.setVie(100);
 		}
 	}
+	
+	public void ajouterALinvetaire(Objet o) {
+		this.inventaire.ajouterObjet(o);
+	}
 
 
 }

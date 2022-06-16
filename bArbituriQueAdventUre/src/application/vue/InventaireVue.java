@@ -40,6 +40,10 @@ public class InventaireVue extends TilePane{
 		this.mapImageToObjet.put(img, o);
 	}
 	
+	public void supprimerObjetDeLaVue(Objet o) {
+		this.getChildren().remove(o);
+	}
+	
 	public void switchAffichageInventaire() {
 		if(this.afficheInventaire) {
 			this.setVisible(false);

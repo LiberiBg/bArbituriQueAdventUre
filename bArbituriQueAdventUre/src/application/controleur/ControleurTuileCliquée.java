@@ -3,9 +3,14 @@ package application.controleur;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.Arbre;
 import application.modele.Parametres;
 import application.modele.Terrain;
+import application.modele.objet.blocs.Bois;
+import application.modele.objet.outils.Hache;
+import application.modele.objet.outils.Outils;
 import application.modele.personnages.Heros;
+import application.vue.TerrainVue;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,17 +18,23 @@ import javafx.scene.input.MouseEvent;
 
 public class ControleurTuileCliquée implements EventHandler<MouseEvent> {
 
-	private int indiceTuile;
+	private final int indiceTuile;
 	private Terrain terrain;
+	private TerrainVue terrainVue;
 	private List<String> listeTerrain;
 	private Heros hero;
 	private ImageView img;
+	private final String idTuilecliquée;
+	private List<Arbre> listeArbre;
 
-	public ControleurTuileCliquée(int indice, Terrain terrain, Heros hero) {
+	public ControleurTuileCliquée(int indice, Terrain terrain, Heros hero, TerrainVue terrainVue) {
 		this.indiceTuile = indice;
 		this.terrain = terrain;
+		this.terrainVue = terrainVue;
 		this.listeTerrain = this.terrain.getListeTerrain();
+		this.listeArbre = this.terrain.getListeArbre();
 		this.hero = hero;
+		this.idTuilecliquée = this.listeTerrain.get(indiceTuile);
 	}
 
 	@Override
@@ -31,8 +42,13 @@ public class ControleurTuileCliquée implements EventHandler<MouseEvent> {
 		this.img = (ImageView) event.getSource();
 
 		if(tuileAtteignable()) {
-			baieRevigorante();
-			détruireTuile();
+			if(this.hero.getObjetPorté() instanceof Hache) {
+				arbre();
+			}
+			else {
+				baieRevigorante();
+			}
+
 		}
 	}
 	public boolean tuileAtteignable() {
@@ -51,18 +67,43 @@ public class ControleurTuileCliquée implements EventHandler<MouseEvent> {
 		return false;
 	}
 
-	public void détruireTuile() {
+	public void détruireTuileCliquée() {
 		this.terrain.détuireBlocsSelonLIndice(this.indiceTuile);
 		this.img.setImage(new Image("application/ressource/tile/tile-1.png"));
 	}
 
 	public void baieRevigorante() {
-		if(this.listeTerrain.get(indiceTuile).equals("48")) {
+		if(this.idTuilecliquée.equals("48")) {
 			this.hero.soigner(20);
+			détruireTuileCliquée();
 		}
 	}
 
-	
+	public void arbre() {
+		for(Arbre a : this.listeArbre) {
+			if(a.indiceAppartientALArbre(this.indiceTuile)) {
+				Hache h = (Hache)this.hero.getObjetPorté();
+				a.infligerDegat(h.getDegat());
+				System.out.println(a.getVieArbreEntier());
+
+				if(a.getVieArbreEntier() <= 0) {
+					for(int i = 0; i < a.getListeTuileComposantLArbre().size(); i++) {
+						supprimerTuile(a.getListeTuileComposantLArbre().get(i));
+					}
+					
+					this.hero.ajouterALinvetaire(new Bois(a.getListeTuileComposantLArbre().size()));
+					//Ajouter bois équivalent a l'arbre dans l'inventaire
+				}
+			}
+		}
+
+
+	}
+
+	private void supprimerTuile(int indiceTuile) {
+		this.terrain.détuireBlocsSelonLIndice(indiceTuile);
+		this.terrainVue.supprimerTuileDeLaVue(indiceTuile);
+	}
 }
 
 
