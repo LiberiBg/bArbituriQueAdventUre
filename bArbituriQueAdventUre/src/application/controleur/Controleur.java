@@ -74,7 +74,11 @@ public class Controleur implements Initializable{
 		BatmanVue batmanVue = new BatmanVue("application/ressource/litlebatman.png", environnement.getBatman(), environnement, environnementPane);
 		environnementPane.getChildren().add(batmanVue);
 		
-		//Creation de la vue de l'inventaire
+		//Creation de la vue de l'inventairethis.environnement.getBatman().seDeplacer();
+		this.environnement.getBatman().gravite();
+		this.environnement.getBatman().seDeplace();
+		
+		this.environnement.getBatman().attaqueHero(this.environnement.getHero());
 		InventaireVue InventaireVue = new InventaireVue(environnement.getHero(), root);
 		environnementPane.getChildren().add(InventaireVue);
 		
@@ -84,7 +88,7 @@ public class Controleur implements Initializable{
 		
 		//listener vie
 		environnement.getHero().vieProperty().addListener(new VieListener(this.vieVue, environnement.getHero()));
-		
+		environnement.getHero().getInventaire().getListeObjet().addListener(new ListeObsObjet(InventaireVue));
 		//KeyEvent
 		root.addEventHandler(KeyEvent.KEY_PRESSED, new KeyPressed(environnement.getHero(), InventaireVue));
 		root.addEventHandler(KeyEvent.KEY_RELEASED, new KeyReleased(environnement.getHero()));
@@ -106,12 +110,12 @@ public class Controleur implements Initializable{
 					this.environnement.getHero().seDeplacer();
 					this.environnement.getHero().gravite();
 
-					this.environnement.getBatman().seDeplacer();
-					this.environnement.getBatman().gravite();
-					this.environnement.getBatman().seDeplace();
-					
-					this.environnement.getBatman().attaqueHero(this.environnement.getHero());
-					
+					if (environnement.getBatman() != null) {
+						this.environnement.getBatman().seDeplacer();
+						this.environnement.getBatman().gravite();
+				//		this.environnement.getBatman().seDeplace();					
+						this.environnement.getBatman().attaqueHero(this.environnement.getHero());
+					}
 				}));
 		this.gameLoop.getKeyFrames().add(kf);
 		this.gameLoop.play();
