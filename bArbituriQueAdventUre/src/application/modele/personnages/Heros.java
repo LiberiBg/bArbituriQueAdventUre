@@ -3,6 +3,7 @@ package application.modele.personnages;
 import application.modele.Inventaire;
 import application.modele.Terrain;
 import application.modele.objet.Objet;
+import application.modele.objet.blocs.Blocs;
 
 public class Heros extends Personnage{
 
@@ -33,9 +34,24 @@ public class Heros extends Personnage{
 			this.setVie(100);
 		}
 	}
-	
+
 	public void ajouterALinvetaire(Objet o) {
-		this.inventaire.ajouterObjet(o);
+		boolean objDéjàDansLInv = false;
+		if(o instanceof Blocs) {
+			for(int i = 0; i < this.inventaire.getListeObjet().size(); i++) {
+				if(o.getId().equals(this.inventaire.getListeObjet().get(i).getId())) {
+					this.inventaire.getListeObjet().get(i).setQuantité(
+							this.inventaire.getListeObjet().get(i).getQuantité()
+							+ o.getQuantité());
+					System.out.println(this.inventaire.getListeObjet().get(i).getId() + this.inventaire.getListeObjet().get(i).getQuantité());
+					objDéjàDansLInv = true;
+				}
+			}
+			if(!objDéjàDansLInv)
+				this.inventaire.ajouterObjet(o);
+		}
+		else
+			this.inventaire.ajouterObjet(o);
 	}
 
 
