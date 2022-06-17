@@ -8,6 +8,7 @@ import application.modele.personnages.Heros;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 
 
@@ -17,13 +18,16 @@ public class InventaireVue extends TilePane{
 	private boolean afficheInventaire ;
 	private HashMap<ImageView, Objet> mapImageToObjet;
 	private Heros hero;
+	private BorderPane root;
 
-	public InventaireVue(Heros hero) {
+	public InventaireVue(Heros hero, BorderPane r) {
 		this.hero = hero;
 		this.inventaire = this.hero.getInventaire();
 		this.afficheInventaire = true;
 		this.mapImageToObjet = new HashMap<ImageView, Objet>();
+		this.root = r ;
 		initInventaire();
+		
 	}
 	
 	public void initInventaire() {
@@ -35,13 +39,9 @@ public class InventaireVue extends TilePane{
 	public void ajouterObjetALaVue(Objet o) {
 		String chemin = "application/ressource/" + o.getId() + ".png";
 		ImageView img = new ImageView(new Image(chemin));
-		img.addEventHandler(MouseEvent.MOUSE_CLICKED, new ControleurTuileInventaireCliquée(this.hero, img, this));
+		img.addEventHandler(MouseEvent.MOUSE_CLICKED, new ControleurTuileInventaireCliquée(this.hero, img, this, root));
 		this.getChildren().add(img);
 		this.mapImageToObjet.put(img, o);
-	}
-	
-	public void supprimerObjetDeLaVue(Objet o) {
-		this.getChildren().remove(o);
 	}
 	
 	public void switchAffichageInventaire() {

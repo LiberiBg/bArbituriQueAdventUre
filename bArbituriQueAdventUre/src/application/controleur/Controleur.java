@@ -14,6 +14,7 @@ import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.ImageCursor;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -24,6 +25,8 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 
@@ -39,11 +42,10 @@ public class Controleur implements Initializable{
 		
 	private Environnement environnement;
 	
-	private BatmanVue batmanVue;
-	
 	@FXML
 	private VieVue vieVue;
-		
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -73,7 +75,7 @@ public class Controleur implements Initializable{
 		environnementPane.getChildren().add(batmanVue);
 		
 		//Creation de la vue de l'inventaire
-		InventaireVue InventaireVue = new InventaireVue(environnement.getHero());
+		InventaireVue InventaireVue = new InventaireVue(environnement.getHero(), root);
 		environnementPane.getChildren().add(InventaireVue);
 		
 		//Creation de la vue de la vie
@@ -82,15 +84,15 @@ public class Controleur implements Initializable{
 		
 		//listener vie
 		environnement.getHero().vieProperty().addListener(new VieListener(this.vieVue, environnement.getHero()));
-		environnement.getHero().getInventaire().getListeObjet().addListener(new ListeObsObjet(InventaireVue));
+		
 		//KeyEvent
 		root.addEventHandler(KeyEvent.KEY_PRESSED, new KeyPressed(environnement.getHero(), InventaireVue));
 		root.addEventHandler(KeyEvent.KEY_RELEASED, new KeyReleased(environnement.getHero()));
-
 		
 		//Début de l'animation et de la gameloop
 		initAnimation();
-		gameLoop.play();
+		gameLoop.play();	
+		
 		
 	}
 
@@ -103,18 +105,19 @@ public class Controleur implements Initializable{
 				(ev -> {
 					this.environnement.getHero().seDeplacer();
 					this.environnement.getHero().gravite();
-					
 
-					if (environnement.getBatman() != null) {
-						this.environnement.getBatman().seDeplacer();
-						this.environnement.getBatman().gravite();
-//						this.environnement.getBatman().seDeplace();					
-						this.environnement.getBatman().attaqueHero(this.environnement.getHero());
-					}
+					this.environnement.getBatman().seDeplacer();
+					this.environnement.getBatman().gravite();
+					this.environnement.getBatman().seDeplace();
+					
+					this.environnement.getBatman().attaqueHero(this.environnement.getHero());
+					
 				}));
 		this.gameLoop.getKeyFrames().add(kf);
 		this.gameLoop.play();
 		
 	}
+	
+	
 	
 }
