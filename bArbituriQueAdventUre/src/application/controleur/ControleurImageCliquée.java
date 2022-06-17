@@ -14,15 +14,15 @@ public class ControleurImageCliquée implements EventHandler<MouseEvent> {
 	private ImageView imgV;
 	private Pane environnementPane;
 	
-	public ControleurImageCliquée(Environnement env, BatmanVue batmanVue, Pane environnementPane) {
+	public ControleurImageCliquée(Environnement env, ImageView imgV, Pane environnementPane) {
 		this.env = env;
-		this.imgV = batmanVue;
+		this.imgV = imgV;
 		this.environnementPane = environnementPane;
 	}
 
 	@Override
 	public void handle(MouseEvent event) {
-		if (env.getHero().getObjetPorté() instanceof Epee && Math.abs(env.getHero().getX() - env.getBatman().getX()) <= 32 && Math.abs(env.getHero().getY() - env.getBatman().getY()) <= 32d)  {
+		if (env.getHero().getObjetPorté() instanceof Epee && Math.abs(env.getHero().getX() - env.getBatman().getX()) <= 32 && Math.abs(env.getHero().getY() - env.getBatman().getY()) <= 32)  {
 			this.env.getBatman().setVie(this.env.getBatman().getVie() - 50);
 			System.out.println("vie batman :" + this.env.getBatman().getVie());
 		}

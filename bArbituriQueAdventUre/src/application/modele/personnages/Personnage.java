@@ -49,14 +49,14 @@ public abstract class Personnage {
 		}
 		
 		public void augmenterVitesseDroite() {
-			if (!colision.blockDroitVide(this.x.getValue(), this.y.getValue()) || !colision.blockDroitVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() > Parametres.getNbrcolonnes()*16)
+			if (!getColision().blockDroitVide(this.x.getValue(), this.y.getValue()) || !getColision().blockDroitVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() > Parametres.getNbrcolonnes()*16)
 				this.vitesseHotizontale = 0;
 			else if (vitesseHotizontale < VITESSEMAX)
 				this.vitesseHotizontale ++;
 		}
 		
 		public void augmenterVitesseGauche() {
-			if (!colision.blockGaucheVide(this.x.getValue(), this.y.getValue()) || !colision.blockGaucheVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() < 0)
+			if (!getColision().blockGaucheVide(this.x.getValue(), this.y.getValue()) || !getColision().blockGaucheVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() < 0)
 				this.vitesseHotizontale = 0;
 			else if (vitesseHotizontale > -VITESSEMAX)
 				this.vitesseHotizontale -- ;
@@ -64,7 +64,7 @@ public abstract class Personnage {
 		
 		
 		public void augmenterVitesseHaut() {
-			if (!colision.blockDessousVide(this.x.getValue() + 8, this.y.getValue()) && colision.blockDessusVide(this.x.getValue() + 8, this.y.getValue()))
+			if (!getColision().blockDessousVide(this.x.getValue() + 8, this.y.getValue()) && getColision().blockDessusVide(this.x.getValue() + 8, this.y.getValue()))
 				this.vitesseVerticale =- 48;
 		}
 		
@@ -74,7 +74,7 @@ public abstract class Personnage {
 		}
 		
 		public void gravite() {
-			if (colision.blockDessousVide(this.x.getValue() + 2, this.y.getValue()) && colision.blockDessousVide(this.x.getValue() + 14, this.y.getValue()))
+			if (getColision().blockDessousVide(this.x.getValue() + 2, this.y.getValue()) && getColision().blockDessousVide(this.x.getValue() + 14, this.y.getValue()))
 				this.vitesseVerticale =+ 2;
 			else
 				this.vitesseVerticale = 0;
@@ -87,10 +87,11 @@ public abstract class Personnage {
 		public void seDeplacer() {
 			this.x.setValue(this.x.getValue() + vitesseHotizontale);
 			this.y.setValue(this.y.getValue() + vitesseVerticale);
-			if (!colision.blockGaucheVide(this.x.getValue(), this.y.getValue()) || !colision.blockGaucheVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() < 0)
+			if (!getColision().blockGaucheVide(this.x.getValue(), this.y.getValue()) || !getColision().blockGaucheVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() < 0)
 				this.vitesseHotizontale = 0;
-			if (!colision.blockDroitVide(this.x.getValue(), this.y.getValue()) || !colision.blockDroitVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() > Parametres.getNbrcolonnes()*16)
+			if (!getColision().blockDroitVide(this.x.getValue(), this.y.getValue()) || !getColision().blockDroitVide(this.x.getValue(), this.y.getValue() + 16) || this.x.getValue() > Parametres.getNbrcolonnes()*16)
 				this.vitesseHotizontale = 0;
+			gravite();
 		}
 		
 		public int getVie() {
@@ -105,6 +106,10 @@ public abstract class Personnage {
 			if (vie >= 0 )
 				this.vie.setValue(vie);
 		
+		}
+
+		public Colision getColision() {
+			return colision;
 		}
 		
 

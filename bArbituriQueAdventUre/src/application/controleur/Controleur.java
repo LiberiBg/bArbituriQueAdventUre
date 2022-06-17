@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import application.modele.Environnement;
 import application.vue.BatmanVue;
 import application.vue.HerosVue;
+import application.vue.HmpzVue;
 import application.vue.InventaireVue;
 import application.vue.TerrainVue;
 import application.vue.VieVue;
@@ -74,6 +75,10 @@ public class Controleur implements Initializable{
 		BatmanVue batmanVue = new BatmanVue("application/ressource/litlebatman.png", environnement.getBatman(), environnement, environnementPane);
 		environnementPane.getChildren().add(batmanVue);
 		
+		//Creation Vue de Hmpz
+		HmpzVue hmpzVue = new HmpzVue(environnement.getHmpz(), environnement, environnementPane);
+		environnementPane.getChildren().add(hmpzVue);
+		
 		//Creation de la vue de l'inventairethis.environnement.getBatman().seDeplacer();
 		this.environnement.getBatman().gravite();
 		this.environnement.getBatman().seDeplace();
@@ -108,13 +113,15 @@ public class Controleur implements Initializable{
 				Duration.seconds(0.017),
 				(ev -> {
 					this.environnement.getHero().seDeplacer();
-					this.environnement.getHero().gravite();
 
 					if (environnement.getBatman() != null) {
 						this.environnement.getBatman().seDeplacer();
-						this.environnement.getBatman().gravite();
-				//		this.environnement.getBatman().seDeplace();					
+						this.environnement.getBatman().seDeplace();					
 						this.environnement.getBatman().attaqueHero(this.environnement.getHero());
+						
+					if(environnement.getHmpz() != null) {
+						this.environnement.getHmpz().seDeplacer();
+					}
 					}
 				}));
 		this.gameLoop.getKeyFrames().add(kf);

@@ -4,18 +4,25 @@ import application.modele.Terrain;
 
 public class Batman extends Personnage {
 	
+	boolean b ;
+	
 	public Batman (int x, int y, Terrain terrain) {
 		super(x, y, terrain, 200);
 	}
 	
 	public void seDeplace () {
 		double n= Math.random();
-		if (n <0.5)
+		if (!getColision().blockDroitVide(this.getX(), this.getY()))
+			b =true;
+		if (!getColision().blockGaucheVide(this.getX(), this.getY()))
+			b = false;
+		
+		if (b)
 			this.augmenterVitesseGauche();
 		else
 			this.augmenterVitesseDroite();
-		double m= Math.random();
-		if (m <0.05)
+		
+		if (n <0.01)
 			this.augmenterVitesseHaut();
 		
 	}

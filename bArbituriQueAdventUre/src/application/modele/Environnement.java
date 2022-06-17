@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import application.modele.personnages.Batman;
 import application.modele.personnages.Heros;
+import application.modele.personnages.Hmpz;
 import application.modele.personnages.Personnage;
 
 public class Environnement {
@@ -14,6 +15,7 @@ public class Environnement {
 	private Inventaire inventaire ;
 	private Heros hero;
 	private Batman batman;
+	private Hmpz hmpz;
 
 	public Environnement() {
 		this.listePersonnage = new ArrayList<Personnage>();
@@ -25,7 +27,8 @@ public class Environnement {
 			e.printStackTrace();
 		}
 		hero = new Heros(60, 40, terrain);
-		batman = new Batman(150, 5, terrain);
+		batman = new Batman(150, 150, terrain);
+		hmpz = new Hmpz(500, 50, terrain);
 	}
 
 	public void addPersonnage(Personnage p) {
@@ -54,6 +57,10 @@ public class Environnement {
 	
 	public void mort() {
 		this.batman = null;
+	}
+
+	public Hmpz getHmpz() {
+		return this.hmpz;
 	}
 
 }
