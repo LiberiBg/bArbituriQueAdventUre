@@ -21,5 +21,9 @@ public abstract class Objet {
 	public String getId() {
 		return id;
 	}
+	
+	public void retirerQuantité(int qté) {
+		this.quantité =this.quantité - qté;  ;
+	}
 
 }

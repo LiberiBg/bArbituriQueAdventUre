@@ -17,6 +17,7 @@ public class InventaireVue extends TilePane{
 	public Inventaire inventaire ;
 	private boolean afficheInventaire ;
 	private HashMap<ImageView, Objet> mapImageToObjet;
+	private HashMap<Objet, ImageView> mapObjetToImage;
 	private Heros hero;
 	private BorderPane root;
 
@@ -25,6 +26,7 @@ public class InventaireVue extends TilePane{
 		this.inventaire = this.hero.getInventaire();
 		this.afficheInventaire = true;
 		this.mapImageToObjet = new HashMap<ImageView, Objet>();
+		this.mapObjetToImage = new HashMap<Objet, ImageView>();
 		this.root = r ;
 		initInventaire();
 		
@@ -42,6 +44,7 @@ public class InventaireVue extends TilePane{
 		img.addEventHandler(MouseEvent.MOUSE_CLICKED, new ControleurTuileInventaireCliquée(this.hero, img, this, root));
 		this.getChildren().add(img);
 		this.mapImageToObjet.put(img, o);
+		this.mapObjetToImage.put(o, img);
 	}
 	
 	public void switchAffichageInventaire() {
@@ -61,5 +64,11 @@ public class InventaireVue extends TilePane{
 	public HashMap<ImageView, Objet> getMapImageToObjet(){
 		return this.mapImageToObjet;
 	}
+	public HashMap<Objet, ImageView> getMapObjetToImage(){
+		return this.mapObjetToImage;
+	}
 	
+	public void retirerObjetAlaVue(Objet o) {
+		this.mapObjetToImage.remove(o);
+	}
 }
