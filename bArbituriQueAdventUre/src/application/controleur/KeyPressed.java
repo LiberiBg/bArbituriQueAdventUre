@@ -28,7 +28,7 @@ public class KeyPressed implements EventHandler<KeyEvent>{
 			System.out.println("Driute");
 			this.hero.augmenterVitesseDroite(2);
 			break ;
-		case SPACE:
+		case Z:
 			System.out.println("sauter");
 			this.hero.augmenterVitesseHaut();
 			break;
