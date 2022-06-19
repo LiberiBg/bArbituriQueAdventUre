@@ -4,6 +4,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.modele.Environnement;
+import application.modele.objet.Objet;
+import application.modele.objet.outils.Epee;
+import application.modele.objet.outils.Hache;
+import application.modele.objet.outils.Pioche;
 import application.vue.BatmanVue;
 import application.vue.HerosVue;
 import application.vue.HmpzVue;
@@ -12,15 +16,13 @@ import application.vue.TerrainVue;
 import application.vue.VieVue;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.value.ChangeListener;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.ImageCursor;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -28,8 +30,6 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 
@@ -48,7 +48,92 @@ public class Controleur implements Initializable{
 	@FXML
 	private VieVue vieVue;
 	
-	
+    @FXML
+    private Button bonstruction;
+
+    @FXML
+    private TextField text;
+    
+    @FXML
+    private Pane constructionPane;
+
+
+    @FXML
+    void construire(ActionEvent event) {
+    
+    	if (text.getText().contains("epee") ) {
+    		if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois") != null && environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre") != null ) {
+    					environnement.getHero().getInventaire().ajouterObjet(new Epee(1));
+    					environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").retirerQuantité(1);
+    					environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre").retirerQuantité(2);
+    					System.out.println(environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").getQuantité());
+    					if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").getQuantité() == 0) 
+    						 environnement.getHero().getInventaire().retirerObjet("Bois");
+
+    					 if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre").getQuantité() == 0) 
+    						 environnement.getHero().getInventaire().retirerObjet("Pierre");	
+ 
+    			 	System.out.println("contruit");
+    		}
+    		else 
+    			System.out.println("pas assez de bloc");
+    		
+    	}
+    	else if(text.getText().contains("pioche")) {
+    		if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois") != null && environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre") != null ) {
+				environnement.getHero().getInventaire().ajouterObjet(new Pioche(1));
+				environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").retirerQuantité(2);
+				environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre").retirerQuantité(3);
+				System.out.println(environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").getQuantité());
+				 if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").getQuantité() == 0) 
+					 environnement.getHero().getInventaire().retirerObjet("Bois");
+
+				 if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre").getQuantité() == 0) 
+					 environnement.getHero().getInventaire().retirerObjet("Pierre");	
+				
+				
+		 	System.out.println("contruit");
+    		}
+    		else 
+    			System.out.println("pas assez de bloc");
+    	}
+    	
+    	else if(text.getText().contains("hache")) {
+    		if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois") != null && environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre") != null ) {
+				environnement.getHero().getInventaire().ajouterObjet(new Hache(1));
+				environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").retirerQuantité(3);
+				environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre").retirerQuantité(2);
+				System.out.println(environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").getQuantité());
+				 if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").getQuantité() == 0) 
+					 environnement.getHero().getInventaire().retirerObjet("Bois");
+
+				 if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre").getQuantité() == 0) 
+					 environnement.getHero().getInventaire().retirerObjet("Pierre");	
+
+					
+					 System.out.println("contruit");
+
+				 }
+   
+    		
+    		else {
+    			System.out.println("pas assez de bloc");
+    	
+    		}
+    	}	
+    	else {
+    		System.out.println("erreur de frappe");
+    	}
+  
+
+    }
+    @FXML
+    void fermerPane() {
+    	this.constructionPane.setVisible(false);
+    	this.environnementPane.requestFocus();
+    }
+
+  
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -64,16 +149,17 @@ public class Controleur implements Initializable{
 		Background bg = new Background(bgimg);
 		root.setBackground(bg);
 		
+		
 		//Creation de l'environnement
 		environnement = new Environnement();
 		TerrainVue terrainVue = new TerrainVue(environnement.getTerrain(), environnement.getHero());
 		environnementPane.getChildren().add(terrainVue);
 		
-		//Creation Vue de Batman
+//		//Creation Vue de Batman
 		BatmanVue batmanVue = new BatmanVue("application/ressource/litlebatman.png", environnement.getBatman(), environnement, environnementPane);
 		environnementPane.getChildren().add(batmanVue);
 		
-		//Creation Vue de Hmpz
+//		//Creation Vue de Hmpz
 		HmpzVue hmpzVue = new HmpzVue(environnement.getHmpz(), environnement, environnementPane);
 		environnementPane.getChildren().add(hmpzVue);
 		
@@ -104,13 +190,10 @@ public class Controleur implements Initializable{
 		initAnimation();
 		gameLoop.play();	
 		
-		
 //		ProgressBar progressBar = new ProgressBar();
 //		progressBar.progressProperty().bind(environnement.getBatman().vieProperty());
 //      environnementPane.getChildren().add(progressBar);
         
-		
-		
 	}
 
 	private void initAnimation() {

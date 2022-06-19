@@ -25,7 +25,7 @@ public class ListeObsObjet implements ListChangeListener<Objet> {
 				}
 			
 			for (Objet o :c.getRemoved() ) {
-				//this.inventaireVue.(o);
+				this.inventaireVue.retirerObjetAlaVue(o);
 				
 			}
 		}
