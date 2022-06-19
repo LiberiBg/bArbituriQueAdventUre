@@ -27,15 +27,15 @@ public class InventaireVue extends TilePane{
 		this.mapImageToObjet = new HashMap<ImageView, Objet>();
 		this.root = r ;
 		initInventaire();
-		
+
 	}
-	
+
 	public void initInventaire() {
 		for (Objet o : this.inventaire.getListeObjet()) {
 			ajouterObjetALaVue(o);
 		}
 	}
-	
+
 	public void ajouterObjetALaVue(Objet o) {
 		String chemin = "application/ressource/" + o.getId() + ".png";
 		ImageView img = new ImageView(new Image(chemin));
@@ -43,7 +43,7 @@ public class InventaireVue extends TilePane{
 		this.getChildren().add(img);
 		this.mapImageToObjet.put(img, o);
 	}
-	
+
 	public void switchAffichageInventaire() {
 		if(this.afficheInventaire) {
 			this.setVisible(false);
@@ -55,11 +55,11 @@ public class InventaireVue extends TilePane{
 			this.afficheInventaire = true;
 			System.out.println("Inventaire caché");
 		}
-			
+
 	}
-	
+
 	public HashMap<ImageView, Objet> getMapImageToObjet(){
 		return this.mapImageToObjet;
 	}
-	
+
 }
