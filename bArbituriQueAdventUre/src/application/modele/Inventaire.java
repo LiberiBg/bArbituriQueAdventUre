@@ -1,49 +1,33 @@
 package application.modele;
 
-import java.util.ArrayList;
-
-import application.modele.outils.Epee;
-import application.modele.outils.Hache;
-import application.modele.outils.Pioche;
+import application.modele.objet.Objet;
+import application.modele.objet.outils.Epee;
+import application.modele.objet.outils.Hache;
+import application.modele.objet.outils.Pioche;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Inventaire {
-	
-	// creer l'image de l'inventaire de la meme maniere que celle du terrain al'ancienne (tab)
 
-	private ArrayList<Objet> listeObjets;
-	private Hache hache ;
-	private Epee epee ;
-	private Pioche pioche ;
+	private ObservableList<Objet> listeObjetObs;
 	
 	public Inventaire() {
-		//listeObjets = FXCollections.observableArrayList();
-		hache = new Hache(1,1,1);
-		epee = new Epee(1,1,1);
-		pioche = new Pioche (1,1,1);		
-		listeObjets = new ArrayList<Objet>();
-		listeObjets.add(hache);
-		listeObjets.add(epee);
-		listeObjets.add(pioche);
-		
-		//Remplir l'inventaire de vide lors de l'iniatilisation
+		listeObjetObs = FXCollections.observableArrayList();
+		ajouterObjet(new Hache(1));
+		ajouterObjet(new Epee(1));
+		ajouterObjet(new Pioche(1));
 		}
 	
-	//METHODE AJOUTER OBJET intelligemment
-	public void ajouterObjet(Objet p) {
-		for (int i = 0 ; i < listeObjets.size() ; i++ ) {
-			if ( p instanceof Objet) {
-				listeObjets.add(p);
-			}
-		}
-	}
-	
-	// METHODE RETIRER OBJET intelligemment
-
-	public ArrayList<Objet> getListeObjet() {
-		return this.listeObjets;
+	public void ajouterObjet(Objet o) {
+		this.listeObjetObs.add(o);
 	}
 
-	
+	public void retirerObjet(Objet o) {
+		listeObjetObs.remove(o);
+	}
+
+	public ObservableList<Objet> getListeObjet() {
+		return this.listeObjetObs;
+	}
 }
+	

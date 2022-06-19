@@ -1,11 +1,14 @@
 package application.vue;
 
+
 import java.util.List;
 
 import application.controleur.ControleurTuileCliquée;
 import application.controleur.ControleurTuileQuittée;
 import application.controleur.ControleurTuileSurvolée;
+import application.modele.Parametres;
 import application.modele.Terrain;
+import application.modele.personnages.Heros;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -14,36 +17,40 @@ import javafx.scene.layout.TilePane;
 public class TerrainVue extends TilePane{
 	
 	Terrain terrain;
+	Heros hero;
 	
-	public TerrainVue(Terrain ter) {
+	public TerrainVue(Terrain ter, Heros hero) {
 		super();
-		this.setPrefColumns(20);
+		this.setPrefColumns(Parametres.getNbrcolonnes());
+		this.setPrefRows(Parametres.getNbrlignes());
 		this.terrain = ter;
+		this.hero = hero;
 		initCarte();
 	}
 
 	public void initCarte() {
+		String chemin;
 		ImageView img = null;
 		List<String> terrain = this.terrain.getListeTerrain();
+		System.out.println(terrain);
 		for (int i=0; i < terrain.size(); i++) {
-			switch (terrain.get(i)) {
-			case "-1":
-				img = new ImageView(new Image("application/ressource/tile-1.png"));
-				break;
-			case "20":
-				img = new ImageView(new Image("application/ressource/tile20.png"));
-				break;
-			case "21":
-				img = new ImageView(new Image("application/ressource/tile21.png"));
-				break;
-			}
+			chemin = "application/ressource/tile/tile" +terrain.get(i)+ ".png";
+			img = new ImageView(new Image(chemin));
+
 			this.getChildren().add(img);
 			img.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, new ControleurTuileSurvolée());
 			img.addEventHandler(MouseEvent.MOUSE_EXITED, new ControleurTuileQuittée());
-			img.addEventHandler(MouseEvent.MOUSE_CLICKED, new ControleurTuileCliquée(i, this.terrain));
+			img.addEventHandler(MouseEvent.MOUSE_CLICKED, new ControleurTuileCliquée(i, this.terrain, this.hero, this));
 		}
 		
 	}
+
+	public void supprimerTuileDeLaVue(int indiceTuile) {
+		ImageView img = new ImageView(new Image("application/ressource/tile/tile-1.png"));
+		this.getChildren().set(indiceTuile, img);
+
+	}
+	
 	
 	
 }
