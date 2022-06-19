@@ -43,7 +43,6 @@ public class Inventaire {
 		for ( Objet ob : listeObjetObs) {
 				if (ob.getId().equals(o) ) {
 					objcherche = ob ;
-
 				}
 			}
 		return objcherche ;

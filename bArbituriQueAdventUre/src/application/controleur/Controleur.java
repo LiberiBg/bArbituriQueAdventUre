@@ -67,6 +67,11 @@ public class Controleur implements Initializable{
     					environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").retirerQuantité(1);
     					environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre").retirerQuantité(2);
     					System.out.println(environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").getQuantité());
+    					if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").getQuantité() == 0) 
+    						 environnement.getHero().getInventaire().retirerObjet("Bois");
+
+    					 if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre").getQuantité() == 0) 
+    						 environnement.getHero().getInventaire().retirerObjet("Pierre");	
  
     			 	System.out.println("contruit");
     		}
@@ -80,6 +85,11 @@ public class Controleur implements Initializable{
 				environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").retirerQuantité(2);
 				environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre").retirerQuantité(3);
 				System.out.println(environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").getQuantité());
+				 if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").getQuantité() == 0) 
+					 environnement.getHero().getInventaire().retirerObjet("Bois");
+
+				 if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre").getQuantité() == 0) 
+					 environnement.getHero().getInventaire().retirerObjet("Pierre");	
 				
 				
 		 	System.out.println("contruit");
@@ -94,16 +104,23 @@ public class Controleur implements Initializable{
 				environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").retirerQuantité(3);
 				environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre").retirerQuantité(2);
 				System.out.println(environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").getQuantité());
-				
+				 if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Bois").getQuantité() == 0) 
+					 environnement.getHero().getInventaire().retirerObjet("Bois");
+
+				 if (environnement.getHero().getInventaire().getIdObjetDansInventaire("Pierre").getQuantité() == 0) 
+					 environnement.getHero().getInventaire().retirerObjet("Pierre");	
 
 					
 					 System.out.println("contruit");
 
 				 }
+   
+    		
     		else {
     			System.out.println("pas assez de bloc");
+    	
     		}
-    	}
+    	}	
     	else {
     		System.out.println("erreur de frappe");
     	}
